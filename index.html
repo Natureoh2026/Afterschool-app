@@ -581,6 +581,7 @@ button:focus-visible, [tabindex]:focus-visible { outline:2px solid var(--primary
     actEdit=null; save(); }
   function removeActivityScoped(kidId,id,wk,scope,defer){ wk=wk||curWeekKey(); var arr=data.schedule[kidId]||[]; var seg=findAct(kidId,id); if(!seg){ if(!defer) save(); return; } var oldFrom=seg.from, oldUntil=seg.until, oldVals={days:seg.days.slice(),start:seg.start,end:seg.end,label:seg.label,makeup:!!seg.makeup}, nextWk=mondayKey(addDays(parseKey(wk),7));
     if(scope==="one"){ data.schedule[kidId]=arr.filter(function(a){return a.id!==id;}); arr=data.schedule[kidId]; if(!oldFrom||oldFrom<wk) arr.push(mkSeg(oldVals,oldFrom,wk)); if(!oldUntil||oldUntil>nextWk) arr.push(mkSeg(oldVals,nextWk,oldUntil)); }
+    else if(scope==="all"){ var asig=function(a){return (a.label||"")+"|"+a.start+"|"+a.end+"|"+(a.days?a.days.slice().sort().join(","):"");}; var akey=asig(seg); data.schedule[kidId]=arr.filter(function(a){return asig(a)!==akey;}); }
     else { if(seg.from===wk){ data.schedule[kidId]=arr.filter(function(a){return a.id!==id;}); } else { seg.until=wk; } }
     if(!defer) save(); }
   function bulkDeleteWeek(scope, kidIds){ var kids=(kidIds&&kidIds.length)?data.kids.filter(function(k){return kidIds.indexOf(k.id)>=0;}):data.kids; if(scope==="all"){ kids.forEach(function(k){ data.schedule[k.id]=[]; }); save(); return; } var wk=curWeekKey(); kids.forEach(function(k){ var arr=data.schedule[k.id]||[]; var ids=arr.filter(function(a){ return a.days&&a.days.length&&segActive(a,wk); }).map(function(a){return a.id;}); ids.forEach(function(id){ removeActivityScoped(k.id,id,wk,scope,true); }); }); save(); }
@@ -889,7 +890,7 @@ button:focus-visible, [tabindex]:focus-visible { outline:2px solid var(--primary
     if(!delAct) return '';
     return '<div class="as-pop" data-act="del-overlay"><div class="as-popcard"><div class="as-poptitle as-disp">'+t("del_scope_title")+'</div>'+
       '<div class="as-empty" style="padding:0 0 14px">'+t("del_scope_q")+'</div>'+
-      '<div class="as-row" style="flex-direction:column;gap:8px"><button class="as-btn ghost" data-act="del-one" style="width:100%;justify-content:center">'+t("scope_one")+'</button><button class="as-btn primary" data-act="del-following" style="width:100%;justify-content:center;background:#c0392b">'+t("scope_following")+'</button></div>'+
+      '<div class="as-row" style="flex-direction:column;gap:8px"><button class="as-btn ghost" data-act="del-one" style="width:100%;justify-content:center">'+t("scope_one")+'</button><button class="as-btn ghost" data-act="del-following" style="width:100%;justify-content:center">'+t("scope_following")+'</button><button class="as-btn ghost" data-act="del-all" style="width:100%;justify-content:center;color:#c0392b">'+t("scope_all")+'</button></div>'+
       '<div class="as-row" style="justify-content:center;margin-top:8px"><button class="as-btn ghost" data-act="del-cancel" style="border:none;color:var(--muted)">'+t("cancel")+'</button></div></div></div>';
   }
   function installHelpPopupHTML(){
@@ -1033,6 +1034,7 @@ button:focus-visible, [tabindex]:focus-visible { outline:2px solid var(--primary
     else if(a==="actv-delete"){ delAct={kidId:actView.kidId,id:actView.id,weekKey:actView.weekKey}; actView=null; render(); }
     else if(a==="del-one"){ var d1=delAct; delAct=null; removeActivityScoped(d1.kidId,d1.id,d1.weekKey,"one"); }
     else if(a==="del-following"){ var d2=delAct; delAct=null; removeActivityScoped(d2.kidId,d2.id,d2.weekKey,"following"); }
+    else if(a==="del-all"){ var d3=delAct; delAct=null; removeActivityScoped(d3.kidId,d3.id,d3.weekKey,"all"); }
     else if(a==="del-cancel"){ delAct=null; render(); }
     else if(a==="del-overlay"){ if(e.target===el){ delAct=null; render(); } }
     else if(a==="bulk-del"){ var bsel0={}; data.kids.forEach(function(k){ bsel0[k.id]=true; }); bulkDel={stage:"scope", sel:bsel0}; render(); }
@@ -1083,6 +1085,37 @@ button:focus-visible, [tabindex]:focus-visible { outline:2px solid var(--primary
     else if(t2.matches&&t2.matches(".as-task")&&(e.key===" "||e.key==="Enter")){ e.preventDefault(); toggleItem(t2.dataset.kid,t2.dataset.task); }
     else if(t2.matches&&t2.matches(".as-avatar")&&(e.key===" "||e.key==="Enter")){ e.preventDefault(); pickPhoto(t2.dataset.kid); }
   });
+  (function(){
+    var sx=0, sy=0, st=0, swipeOk=false;
+    function noSwipe(node){
+      while(node&&node!==root){
+        if(node.nodeType===1){
+          var c=node.classList;
+          if(c){ if(c.contains("as-pop")) return true; if(c.contains("as-grid-scroll")&&node.scrollWidth>node.clientWidth+2) return true; }
+          var tag=node.tagName;
+          if(tag==="INPUT"||tag==="SELECT"||tag==="TEXTAREA") return true;
+          var da=node.getAttribute&&node.getAttribute("data-act");
+          if(da&&/-drag$/.test(da)) return true;
+        }
+        node=node.parentNode;
+      }
+      return false;
+    }
+    root.addEventListener("touchstart", function(e){
+      if(view!=="week"||e.touches.length>1||document.body.classList.contains("as-dragging")||noSwipe(e.target)){ swipeOk=false; return; }
+      var p=e.touches[0]; sx=p.clientX; sy=p.clientY; st=Date.now(); swipeOk=true;
+    }, {passive:true});
+    root.addEventListener("touchend", function(e){
+      if(!swipeOk) return; swipeOk=false;
+      if(view!=="week"||document.body.classList.contains("as-dragging")) return;
+      var p=e.changedTouches[0]; if(!p) return;
+      var dx=p.clientX-sx, dy=p.clientY-sy;
+      if(Date.now()-st>700) return;
+      if(Math.abs(dx)<55||Math.abs(dx)<Math.abs(dy)*1.8) return;
+      if(dx<0) weekOffset++; else weekOffset--;
+      render();
+    }, {passive:true});
+  })();
 
   // ── 홈 화면 아이콘 / 앱 이름 ──
   function upsertLink(rel,href,extra){ var l=document.querySelector('link[rel="'+rel+'"]'); if(!l){ l=document.createElement("link"); l.setAttribute("rel",rel); document.head.appendChild(l); } l.setAttribute("href",href); if(extra) for(var k in extra) l.setAttribute(k,extra[k]); }
