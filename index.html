@@ -163,7 +163,7 @@ html, body { margin:0; padding:0; background:#F4F6F3; overscroll-behavior:none; 
   .as-wkctrl .as-seg-btn { padding:6px 9px; font-size:calc(11.5px * var(--fs)); }
   .as-wkctrl .as-pill { padding:0 8px; height:28px; font-size:calc(11px * var(--fs)); }
 }
-.as-arrowbtn:hover { border-color:var(--primary); color:var(--primary); }
+@media (hover:hover){ .as-arrowbtn:hover { border-color:var(--primary); color:var(--primary); } }
 .as-detail-row { display:flex; align-items:center; gap:9px; font-size:14px; padding:6px 0; }
 .as-detail-row .ico { color:var(--muted); flex:none; display:flex; }
 .as-detail-row .v { font-weight:600; }
@@ -691,7 +691,7 @@ button:focus-visible, [tabindex]:focus-visible { outline:2px solid var(--primary
     return cv;
   }
   function downloadImage(wc, kidIds){ withFonts(function(){ var cv=buildScheduleCanvas(wc, kidIds); cv.toBlob(function(blob){ if(!blob) return; var url=URL.createObjectURL(blob), a=document.createElement("a"); a.href=url; a.download=imgFilename(); document.body.appendChild(a); a.click(); document.body.removeChild(a); setTimeout(function(){URL.revokeObjectURL(url);},1500); }); }); }
-  function scheduleText(wc, kidIds){ var lines=[t("week_title")+" ("+weekRangeText(weekOffset)+")"], wk=curWeekKey(); var kids=(kidIds&&kidIds.length)?data.kids.filter(function(k){return kidIds.indexOf(k.id)>=0;}):data.kids; kids.forEach(function(kid){ lines.push("["+kid.name+"]"); visDays().forEach(function(d){ actsFor(kid.id,d,wk).forEach(function(a){ lines.push(dows()[d]+" "+timeRange(a)+" "+a.label+(a.makeup?" ["+t("makeup")+"]":"")); }); }); lines.push(""); });
+  function scheduleText(wc, kidIds){ var lines=[t("week_title")+" ("+weekRangeText(weekOffset)+")",""], wk=curWeekKey(); var kids=(kidIds&&kidIds.length)?data.kids.filter(function(k){return kidIds.indexOf(k.id)>=0;}):data.kids; kids.forEach(function(kid){ lines.push("["+kid.name+"]"); visDays().forEach(function(d){ actsFor(kid.id,d,wk).forEach(function(a){ lines.push(dows()[d]+" "+timeRange(a)+" "+a.label+(a.makeup?" ["+t("makeup")+"]":"")); }); }); lines.push(""); });
     if(wc){ var wcl=classesForWeek(curWeekKey()); if(kidIds&&kidIds.length){ wcl=wcl.filter(function(c){ return (c.kidIds||[]).some(function(id){return kidIds.indexOf(id)>=0;}); }); } if(wcl.length){ lines.push("— "+t("classinfo_title")+" —"); lines.push(""); wcl.forEach(function(c){ var kk=(c.kidIds||[]).map(function(id){return data.kids.filter(function(k){return k.id===id;})[0];}).filter(Boolean); var who=kk.map(function(k){return k.name;}).join(", "); lines.push("• "+c.name+(who?" ("+who+")":"")); if(c.location) lines.push("  "+t("loc")+": "+c.location); lines.push("  "+t("shuttle")+": "+(c.shuttle?t("yes"):t("no"))); if(c.supplies) lines.push("  "+t("supplies")+": "+c.supplies); if(c.memo && c.memo.trim()) lines.push("  "+t("cls_memo")+": "+c.memo); lines.push(""); }); } }
     return lines.join("\n").trim(); }
   function toast(msg){ var el=document.createElement("div"); el.textContent=msg; el.style.cssText="position:fixed;left:50%;bottom:96px;transform:translateX(-50%);background:#20302A;color:#fff;padding:10px 16px;border-radius:12px;font-size:13.5px;font-weight:700;z-index:60;opacity:0;transition:opacity .2s;max-width:84%;text-align:center"; document.body.appendChild(el); requestAnimationFrame(function(){ el.style.opacity="1"; }); setTimeout(function(){ el.style.opacity="0"; setTimeout(function(){ if(el.parentNode) el.parentNode.removeChild(el); },300); },1900); }
