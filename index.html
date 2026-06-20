@@ -157,6 +157,12 @@ html, body { margin:0; padding:0; background:#F4F6F3; overscroll-behavior:none; 
 .as-langbtn { font-family:inherit; font-size:calc(13px * var(--fs)); font-weight:700; color:var(--muted); background:#fff; border:1px solid var(--line); border-radius:10px; padding:8px 14px; cursor:pointer; }
 .as-langbtn.on { background:var(--primary); border-color:var(--primary); color:#fff; }
 .as-arrowbtn { border:1px solid var(--line); background:#fff; border-radius:8px; width:26px; height:26px; cursor:pointer; color:var(--ink); display:inline-flex; align-items:center; justify-content:center; padding:0; }
+@media (max-width:560px){
+  .as-wktop { gap:6px !important; }
+  .as-wkctrl { gap:6px !important; }
+  .as-wkctrl .as-seg-btn { padding:6px 9px; font-size:calc(11.5px * var(--fs)); }
+  .as-wkctrl .as-pill { padding:0 8px; height:28px; font-size:calc(11px * var(--fs)); }
+}
 .as-arrowbtn:hover { border-color:var(--primary); color:var(--primary); }
 .as-detail-row { display:flex; align-items:center; gap:9px; font-size:14px; padding:6px 0; }
 .as-detail-row .ico { color:var(--muted); flex:none; display:flex; }
@@ -226,7 +232,7 @@ button:focus-visible, [tabindex]:focus-visible { outline:2px solid var(--primary
       settings:"Settings", language:"Language", save_image:"Save image", share:"Share", copied:"Copied to clipboard", edit_children:"Children",
       to_today:"Today", brk:"Break", year:"Year", term_title:"Year & term", term_word:"Term", on_break:"On break",
       achievement:"Routine tracker", this_month:"this month", close:"Close", stat_weekday:"Weekdays", stat_all:"All",
-      theme:"Theme", palette:"Color theme", text_size:"Text size", ts_sm:"Small", ts_md:"Medium", ts_lg:"Large", share_scope_q:"What to include?", export_who:"Which children?", scope_table_only:"Timetable only", scope_with_class:"Timetable + class info", add_home:"Add to Home Screen", add_home_title:"Add to Home Screen", add_home_ios:"iPhone (Safari): tap the Share button, then \u2018Add to Home Screen\u2019.", add_home_android:"Android (Chrome): tap the \u22ee menu, then \u2018Add to Home screen\u2019.", already_added:"It\u2019s already on your home screen.", reorder_hint:"Drag the \u2261 handle to reorder children.", del_scope_title:"Delete class", del_scope_q:"Which weeks should be removed?", clear_week:"Delete schedule", bulk_title:"Delete schedule", bulk_q:"What would you like to delete?", scope_all:"Delete all", bulk_confirm_all:"All schedules for every week will be deleted. This can't be undone.", bulk_confirm_title:"Delete for sure?", bulk_confirm_one:"All of this week\u2019s activities will be deleted. This can\u2019t be undone.", bulk_confirm_following:"This week and all future activities will be deleted. This can\u2019t be undone.", bulk_do:"Delete", bulk_done:"Schedule deleted.", share_app:"Share After-School", share_app_text:"Check out this After-School planner:", backup_title:"Backup", backup_hint:"Export this device\u2019s data to a file, then import it on another device to pick up where you left off.", backup_export:"Export", backup_import:"Import", backup_done:"Backup file exported.", backup_loaded:"Backup loaded.", backup_bad:"That\u2019s not a valid backup file.", backup_fail:"Something went wrong.", backup_confirm:"This will overwrite the data on this device. Continue?", kid_del_q:"All schedules and information for this child will be deleted. This can't be undone.", version:"Version" },
+      theme:"Theme", palette:"Color theme", text_size:"Text size", ts_sm:"Small", ts_md:"Medium", ts_lg:"Large", share_scope_q:"What to include?", export_who:"Which children?", del_who:"Which children?", scope_table_only:"Timetable only", scope_with_class:"Timetable + class info", add_home:"Add to Home Screen", add_home_title:"Add to Home Screen", add_home_ios:"iPhone (Safari): tap the Share button, then \u2018Add to Home Screen\u2019.", add_home_android:"Android (Chrome): tap the \u22ee menu, then \u2018Add to Home screen\u2019.", already_added:"It\u2019s already on your home screen.", reorder_hint:"Drag the \u2261 handle to reorder children.", del_scope_title:"Delete class", del_scope_q:"Which weeks should be removed?", clear_week:"Delete schedule", bulk_title:"Delete schedule", bulk_q:"What would you like to delete?", scope_all:"Delete all", bulk_confirm_all:"All schedules for every week will be deleted. This can't be undone.", bulk_confirm_title:"Delete for sure?", bulk_confirm_one:"All of this week\u2019s activities will be deleted. This can\u2019t be undone.", bulk_confirm_following:"This week and all future activities will be deleted. This can\u2019t be undone.", bulk_do:"Delete", bulk_done:"Schedule deleted.", share_app:"Share After-School", share_app_text:"Check out this After-School planner:", backup_title:"Backup", backup_hint:"Export this device\u2019s data to a file, then import it on another device to pick up where you left off.", backup_export:"Export", backup_import:"Import", backup_done:"Backup file exported.", backup_loaded:"Backup loaded.", backup_bad:"That\u2019s not a valid backup file.", backup_fail:"Something went wrong.", backup_confirm:"This will overwrite the data on this device. Continue?", kid_del_q:"All schedules and information for this child will be deleted. This can't be undone.", version:"Version" },
     ko: { dows:["일","월","화","수","목","금","토"], dowl:["일요일","월요일","화요일","수요일","목요일","금요일","토요일"],
       app_title:"우리집 방과 후", tab_today:"오늘", tab_week:"시간표", tab_edit:"편집",
       no_activities:"오늘은 방과 후 일정이 없어요 🌿", routines:"루틴", no_routines_today:"오늘 해당하는 루틴이 없어요.", today_todo:"할 일",
@@ -248,7 +254,7 @@ button:focus-visible, [tabindex]:focus-visible { outline:2px solid var(--primary
       settings:"설정", language:"언어", save_image:"이미지 저장", share:"공유", copied:"클립보드에 복사됨", edit_children:"아이별 설정",
       to_today:"오늘로", brk:"방학", year:"연도", term_title:"연도 · 학기", term_word:"학기", on_break:"방학 중",
       achievement:"루틴 기록", this_month:"이번 달", close:"닫기", stat_weekday:"평일만", stat_all:"전체",
-      theme:"테마", palette:"색상 테마", text_size:"글자 크기", ts_sm:"작게", ts_md:"보통", ts_lg:"크게", share_scope_q:"무엇을 포함할까요?", export_who:"출력할 아이", scope_table_only:"시간표만", scope_with_class:"시간표 + 수업 정보", add_home:"홈 화면에 추가", add_home_title:"홈 화면에 추가하기", add_home_ios:"아이폰(사파리): 아래 공유 버튼을 누른 뒤 \u2018홈 화면에 추가\u2019를 선택해요.", add_home_android:"안드로이드(크롬): 오른쪽 위 \u22ee 메뉴에서 \u2018홈 화면에 추가\u2019를 선택해요.", already_added:"이미 홈 화면에 추가되어 있어요.", reorder_hint:"≡ 손잡이를 끌어 아이 순서를 바꿔요.", del_scope_title:"일정 삭제", del_scope_q:"어느 범위를 삭제할까요?", clear_week:"일정 삭제", bulk_title:"일정 삭제", bulk_q:"삭제할 범위를 선택하세요.", scope_all:"전체 삭제", bulk_confirm_all:"저장된 모든 주의 일정이 삭제돼요. 되돌릴 수 없어요.", bulk_confirm_title:"정말 삭제할까요?", bulk_confirm_one:"이번 주의 모든 일정이 삭제돼요. 되돌릴 수 없어요.", bulk_confirm_following:"이번 주부터 향후 모든 일정이 삭제돼요. 되돌릴 수 없어요.", bulk_do:"삭제", bulk_done:"일정을 삭제했어요.", share_app:"방과 후 공유하기", share_app_text:"우리 아이 방과 후 일정 앱이에요. 한번 써보세요:", backup_title:"데이터 백업", backup_hint:"이 기기에 저장된 내용을 파일로 내보내고, 다른 기기에서 불러와 이어서 쓸 수 있어요.", backup_export:"내보내기", backup_import:"불러오기", backup_done:"백업 파일을 내보냈어요.", backup_loaded:"백업을 불러왔어요.", backup_bad:"올바른 백업 파일이 아니에요.", backup_fail:"처리 중 문제가 생겼어요.", backup_confirm:"지금 이 기기의 내용을 덮어써요. 계속할까요?", kid_del_q:"이 아이의 모든 일정과 정보가 삭제돼요. 되돌릴 수 없어요.", version:"버전" },
+      theme:"테마", palette:"색상 테마", text_size:"글자 크기", ts_sm:"작게", ts_md:"보통", ts_lg:"크게", share_scope_q:"무엇을 포함할까요?", export_who:"출력할 아이", del_who:"삭제할 아이", scope_table_only:"시간표만", scope_with_class:"시간표 + 수업 정보", add_home:"홈 화면에 추가", add_home_title:"홈 화면에 추가하기", add_home_ios:"아이폰(사파리): 아래 공유 버튼을 누른 뒤 \u2018홈 화면에 추가\u2019를 선택해요.", add_home_android:"안드로이드(크롬): 오른쪽 위 \u22ee 메뉴에서 \u2018홈 화면에 추가\u2019를 선택해요.", already_added:"이미 홈 화면에 추가되어 있어요.", reorder_hint:"≡ 손잡이를 끌어 아이 순서를 바꿔요.", del_scope_title:"일정 삭제", del_scope_q:"어느 범위를 삭제할까요?", clear_week:"일정 삭제", bulk_title:"일정 삭제", bulk_q:"삭제할 범위를 선택하세요.", scope_all:"전체 삭제", bulk_confirm_all:"저장된 모든 주의 일정이 삭제돼요. 되돌릴 수 없어요.", bulk_confirm_title:"정말 삭제할까요?", bulk_confirm_one:"이번 주의 모든 일정이 삭제돼요. 되돌릴 수 없어요.", bulk_confirm_following:"이번 주부터 향후 모든 일정이 삭제돼요. 되돌릴 수 없어요.", bulk_do:"삭제", bulk_done:"일정을 삭제했어요.", share_app:"방과 후 공유하기", share_app_text:"우리 아이 방과 후 일정 앱이에요. 한번 써보세요:", backup_title:"데이터 백업", backup_hint:"이 기기에 저장된 내용을 파일로 내보내고, 다른 기기에서 불러와 이어서 쓸 수 있어요.", backup_export:"내보내기", backup_import:"불러오기", backup_done:"백업 파일을 내보냈어요.", backup_loaded:"백업을 불러왔어요.", backup_bad:"올바른 백업 파일이 아니에요.", backup_fail:"처리 중 문제가 생겼어요.", backup_confirm:"지금 이 기기의 내용을 덮어써요. 계속할까요?", kid_del_q:"이 아이의 모든 일정과 정보가 삭제돼요. 되돌릴 수 없어요.", version:"버전" },
     zh: { dows:["日","一","二","三","四","五","六"], dowl:["星期日","星期一","星期二","星期三","星期四","星期五","星期六"],
       app_title:"放学后", tab_today:"今天", tab_week:"课表", tab_edit:"编辑",
       no_activities:"今天没有课后安排 🌿", routines:"日常", no_routines_today:"今天没有日常任务。", today_todo:"待办",
@@ -270,7 +276,7 @@ button:focus-visible, [tabindex]:focus-visible { outline:2px solid var(--primary
       settings:"设置", language:"语言", save_image:"保存图片", share:"分享", copied:"已复制到剪贴板", edit_children:"孩子设置",
       to_today:"回到今天", brk:"假期", year:"年份", term_title:"年份 · 学期", term_word:"学期", on_break:"假期中",
       achievement:"日常打卡", this_month:"本月", close:"关闭", stat_weekday:"仅工作日", stat_all:"全部",
-      theme:"主题", palette:"配色", text_size:"字体大小", ts_sm:"小", ts_md:"中", ts_lg:"大", share_scope_q:"包含哪些内容？", export_who:"包含哪些孩子？", scope_table_only:"仅课表", scope_with_class:"课表 + 课程信息", add_home:"添加到主屏幕", add_home_title:"添加到主屏幕", add_home_ios:"iPhone(Safari)：点击分享按钮，选择\u201c添加到主屏幕\u201d。", add_home_android:"Android(Chrome)：点击右上角 \u22ee 菜单，选择\u201c添加到主屏幕\u201d。", already_added:"已经在主屏幕上了。", reorder_hint:"拖动 ≡ 手柄可调整孩子顺序。", del_scope_title:"删除安排", del_scope_q:"删除哪些周？", clear_week:"删除日程", bulk_title:"删除日程", bulk_q:"请选择删除范围。", scope_all:"全部删除", bulk_confirm_all:"所有周的安排都会被删除，无法恢复。", bulk_confirm_title:"确定删除吗？", bulk_confirm_one:"本周的所有安排都会被删除，无法恢复。", bulk_confirm_following:"本周及以后的所有安排都会被删除，无法恢复。", bulk_do:"删除", bulk_done:"已删除安排。", share_app:"分享放学后", share_app_text:"推荐这个放学后日程应用：", backup_title:"数据备份", backup_hint:"将本设备的数据导出为文件，再在其他设备上导入，继续使用。", backup_export:"导出", backup_import:"导入", backup_done:"已导出备份文件。", backup_loaded:"已导入备份。", backup_bad:"不是有效的备份文件。", backup_fail:"出现了问题。", backup_confirm:"这将覆盖本设备上的数据。要继续吗？", kid_del_q:"该孩子的所有日程和信息都会被删除，且无法恢复。", version:"版本" },
+      theme:"主题", palette:"配色", text_size:"字体大小", ts_sm:"小", ts_md:"中", ts_lg:"大", share_scope_q:"包含哪些内容？", export_who:"包含哪些孩子？", del_who:"删除哪些孩子？", scope_table_only:"仅课表", scope_with_class:"课表 + 课程信息", add_home:"添加到主屏幕", add_home_title:"添加到主屏幕", add_home_ios:"iPhone(Safari)：点击分享按钮，选择\u201c添加到主屏幕\u201d。", add_home_android:"Android(Chrome)：点击右上角 \u22ee 菜单，选择\u201c添加到主屏幕\u201d。", already_added:"已经在主屏幕上了。", reorder_hint:"拖动 ≡ 手柄可调整孩子顺序。", del_scope_title:"删除安排", del_scope_q:"删除哪些周？", clear_week:"删除日程", bulk_title:"删除日程", bulk_q:"请选择删除范围。", scope_all:"全部删除", bulk_confirm_all:"所有周的安排都会被删除，无法恢复。", bulk_confirm_title:"确定删除吗？", bulk_confirm_one:"本周的所有安排都会被删除，无法恢复。", bulk_confirm_following:"本周及以后的所有安排都会被删除，无法恢复。", bulk_do:"删除", bulk_done:"已删除安排。", share_app:"分享放学后", share_app_text:"推荐这个放学后日程应用：", backup_title:"数据备份", backup_hint:"将本设备的数据导出为文件，再在其他设备上导入，继续使用。", backup_export:"导出", backup_import:"导入", backup_done:"已导出备份文件。", backup_loaded:"已导入备份。", backup_bad:"不是有效的备份文件。", backup_fail:"出现了问题。", backup_confirm:"这将覆盖本设备上的数据。要继续吗？", kid_del_q:"该孩子的所有日程和信息都会被删除，且无法恢复。", version:"版本" },
     ja: { dows:["日","月","火","水","木","金","土"], dowl:["日曜日","月曜日","火曜日","水曜日","木曜日","金曜日","土曜日"],
       app_title:"放課後", tab_today:"今日", tab_week:"時間割", tab_edit:"編集",
       no_activities:"今日は放課後の予定がありません 🌿", routines:"ルーティン", no_routines_today:"今日のルーティンはありません。", today_todo:"やること",
@@ -292,7 +298,7 @@ button:focus-visible, [tabindex]:focus-visible { outline:2px solid var(--primary
       settings:"設定", language:"言語", save_image:"画像を保存", share:"共有", copied:"クリップボードにコピーしました", edit_children:"子どもの設定",
       to_today:"今日へ", brk:"休み", year:"年", term_title:"年 · 学期", term_word:"学期", on_break:"休み中",
       achievement:"ルーティン記録", this_month:"今月", close:"閉じる", stat_weekday:"平日のみ", stat_all:"すべて",
-      theme:"テーマ", palette:"カラー", text_size:"文字サイズ", ts_sm:"小", ts_md:"中", ts_lg:"大", share_scope_q:"何を含めますか？", export_who:"対象のお子さま", scope_table_only:"時間割のみ", scope_with_class:"時間割 + 教室情報", add_home:"ホーム画面に追加", add_home_title:"ホーム画面に追加", add_home_ios:"iPhone（Safari）：共有ボタンから\u300cホーム画面に追加\u300dを選びます。", add_home_android:"Android（Chrome）：右上の \u22ee メニューから\u300cホーム画面に追加\u300dを選びます。", already_added:"すでにホーム画面にあります。", reorder_hint:"≡ をドラッグして子どもの順番を変更。", del_scope_title:"予定を削除", del_scope_q:"どの範囲を削除しますか？", clear_week:"予定を削除", bulk_title:"予定を削除", bulk_q:"削除する範囲を選んでください。", scope_all:"すべて削除", bulk_confirm_all:"保存されたすべての週の予定が削除されます。元に戻せません。", bulk_confirm_title:"本当に削除しますか？", bulk_confirm_one:"今週のすべての予定が削除されます。元に戻せません。", bulk_confirm_following:"今週以降のすべての予定が削除されます。元に戻せません。", bulk_do:"削除", bulk_done:"予定を削除しました。", share_app:"放課後を共有", share_app_text:"放課後の予定アプリです。どうぞ：", backup_title:"データのバックアップ", backup_hint:"この端末のデータをファイルに書き出し、別の端末で読み込んで続きを使えます。", backup_export:"エクスポート", backup_import:"インポート", backup_done:"バックアップファイルを書き出しました。", backup_loaded:"バックアップを読み込みました。", backup_bad:"有効なバックアップファイルではありません。", backup_fail:"問題が発生しました。", backup_confirm:"この端末のデータを上書きします。続けますか？", kid_del_q:"このお子さまのすべての予定と情報が削除されます。元に戻せません。", version:"バージョン" }
+      theme:"テーマ", palette:"カラー", text_size:"文字サイズ", ts_sm:"小", ts_md:"中", ts_lg:"大", share_scope_q:"何を含めますか？", export_who:"対象のお子さま", del_who:"対象のお子さま", scope_table_only:"時間割のみ", scope_with_class:"時間割 + 教室情報", add_home:"ホーム画面に追加", add_home_title:"ホーム画面に追加", add_home_ios:"iPhone（Safari）：共有ボタンから\u300cホーム画面に追加\u300dを選びます。", add_home_android:"Android（Chrome）：右上の \u22ee メニューから\u300cホーム画面に追加\u300dを選びます。", already_added:"すでにホーム画面にあります。", reorder_hint:"≡ をドラッグして子どもの順番を変更。", del_scope_title:"予定を削除", del_scope_q:"どの範囲を削除しますか？", clear_week:"予定を削除", bulk_title:"予定を削除", bulk_q:"削除する範囲を選んでください。", scope_all:"すべて削除", bulk_confirm_all:"保存されたすべての週の予定が削除されます。元に戻せません。", bulk_confirm_title:"本当に削除しますか？", bulk_confirm_one:"今週のすべての予定が削除されます。元に戻せません。", bulk_confirm_following:"今週以降のすべての予定が削除されます。元に戻せません。", bulk_do:"削除", bulk_done:"予定を削除しました。", share_app:"放課後を共有", share_app_text:"放課後の予定アプリです。どうぞ：", backup_title:"データのバックアップ", backup_hint:"この端末のデータをファイルに書き出し、別の端末で読み込んで続きを使えます。", backup_export:"エクスポート", backup_import:"インポート", backup_done:"バックアップファイルを書き出しました。", backup_loaded:"バックアップを読み込みました。", backup_bad:"有効なバックアップファイルではありません。", backup_fail:"問題が発生しました。", backup_confirm:"この端末のデータを上書きします。続けますか？", kid_del_q:"このお子さまのすべての予定と情報が削除されます。元に戻せません。", version:"バージョン" }
   };
 
   var SEED = {
@@ -577,7 +583,7 @@ button:focus-visible, [tabindex]:focus-visible { outline:2px solid var(--primary
     if(scope==="one"){ data.schedule[kidId]=arr.filter(function(a){return a.id!==id;}); arr=data.schedule[kidId]; if(!oldFrom||oldFrom<wk) arr.push(mkSeg(oldVals,oldFrom,wk)); if(!oldUntil||oldUntil>nextWk) arr.push(mkSeg(oldVals,nextWk,oldUntil)); }
     else { if(seg.from===wk){ data.schedule[kidId]=arr.filter(function(a){return a.id!==id;}); } else { seg.until=wk; } }
     if(!defer) save(); }
-  function bulkDeleteWeek(scope){ if(scope==="all"){ data.kids.forEach(function(k){ data.schedule[k.id]=[]; }); save(); return; } var wk=curWeekKey(); data.kids.forEach(function(k){ var arr=data.schedule[k.id]||[]; var ids=arr.filter(function(a){ return a.days&&a.days.length&&segActive(a,wk); }).map(function(a){return a.id;}); ids.forEach(function(id){ removeActivityScoped(k.id,id,wk,scope,true); }); }); save(); }
+  function bulkDeleteWeek(scope, kidIds){ var kids=(kidIds&&kidIds.length)?data.kids.filter(function(k){return kidIds.indexOf(k.id)>=0;}):data.kids; if(scope==="all"){ kids.forEach(function(k){ data.schedule[k.id]=[]; }); save(); return; } var wk=curWeekKey(); kids.forEach(function(k){ var arr=data.schedule[k.id]||[]; var ids=arr.filter(function(a){ return a.days&&a.days.length&&segActive(a,wk); }).map(function(a){return a.id;}); ids.forEach(function(id){ removeActivityScoped(k.id,id,wk,scope,true); }); }); save(); }
   function syncClassForm(){ if(!classEdit) return; var n=byId("cls-name"),l=byId("cls-loc"),m=byId("cls-map"),s=byId("cls-supplies"),mo=byId("cls-memo"); if(n)classEdit.name=n.value; if(l)classEdit.location=l.value; if(m)classEdit.mapUrl=m.value; if(s)classEdit.supplies=s.value; if(mo)classEdit.memo=mo.value; }
   function openClassAdd(){ classEdit={id:null,name:"",kidIds:[],location:"",mapUrl:"",shuttle:false,supplies:"",memo:""}; render(); }
   function openClassEdit(id){ var c=(data.classes||[]).filter(function(x){return x.id===id;})[0]; if(c){ classEdit={id:c.id,name:c.name,kidIds:(c.kidIds||[]).slice(),location:c.location||"",mapUrl:c.mapUrl||"",shuttle:!!c.shuttle,supplies:c.supplies||"",memo:c.memo||""}; render(); } }
@@ -598,36 +604,39 @@ button:focus-visible, [tabindex]:focus-visible { outline:2px solid var(--primary
     var cf=canvasFont(), cd=canvasDisp(), vd=visDays(), mon=weekMonday(weekOffset), tkNow=todayKey(), th=THEMES[data.theme.color]||THEMES.forest, wk=curWeekKey();
     var wd=vd.map(function(d){return dowDate(mon,d);});
     var nDays=vd.length;
-    var scale=2, W=800, padX=28, padTop=28;
+    var scale=2, W=800, padX=34, padTop=34, cardM=16;
+    function hexa(hex,a){ var h=(hex||"#888888").replace("#",""); if(h.length===3) h=h[0]+h[0]+h[1]+h[1]+h[2]+h[2]; var n=parseInt(h,16); return "rgba("+((n>>16)&255)+","+((n>>8)&255)+","+(n&255)+","+a+")"; }
+    function rrPath(c,x,y,w,h,r){ r=Math.min(r,w/2,h/2); if(r<0)r=0; c.beginPath(); c.moveTo(x+r,y); c.arcTo(x+w,y,x+w,y+h,r); c.arcTo(x+w,y+h,x,y+h,r); c.arcTo(x,y+h,x,y,r); c.arcTo(x,y,x+w,y,r); c.closePath(); }
     var kids=(kidIds&&kidIds.length)?data.kids.filter(function(k){return kidIds.indexOf(k.id)>=0;}):data.kids;
     var _nm=document.createElement("canvas").getContext("2d"); _nm.font='700 14px "'+cf+'", sans-serif';
     var _maxNm=0; kids.forEach(function(k){ var w=_nm.measureText(k.name||"").width; if(w>_maxNm) _maxNm=w; });
-    var nameW=Math.max(60, Math.min(150, Math.round(20+_maxNm+16)));
+    var nameW=Math.max(64, Math.min(150, Math.round(20+_maxNm+18)));
     var dayW=(W-padX*2-nameW)/nDays;
-    var headerH=100, colHeadH=56, rowPadV=14, lineH=25, minRowH=86, actBlockH=31;
+    var headerH=104, colHeadH=54, rowPadV=14, minRowH=86, actBlockH=31;
     var rowH=kids.map(function(kid){ var mx=1; vd.forEach(function(d){ var n=actsFor(kid.id,d,wk).length; if(n>mx) mx=n; }); return Math.max(minRowH, rowPadV*2+mx*actBlockH); });
     var gridTop=headerH+colHeadH, gridBottom=gridTop+rowH.reduce(function(a,b){return a+b;},0);
-    var maxW=W-padX*2, meas=document.createElement("canvas").getContext("2d");
+    var meas=document.createElement("canvas").getContext("2d");
     var weekClasses=classesForWeek(wk); if(kidIds&&kidIds.length){ weekClasses=weekClasses.filter(function(c){ return (c.kidIds||[]).some(function(id){return kidIds.indexOf(id)>=0;}); }); }
-    var clsTitleMt=30, clsTitleSize=17, clsTitleGap=10, blockGap=18;
-    var twoCol=(withClasses && weekClasses.length>=2), nCols=twoCol?2:1, colGap=26;
+    var clsTitleMt=28, clsTitleSize=17, clsTitleGap=12, blockGap=22, cardPadV=12, accentW=4;
+    var twoCol=(withClasses && weekClasses.length>=2), nCols=twoCol?2:1, colGap=20;
     var colW=twoCol?(W-padX*2-colGap)/2:(W-padX*2);
+    var innerW=colW-36;
     var classBlocks=[];
     if(withClasses && weekClasses.length){
       weekClasses.forEach(function(c){
         var kk=(c.kidIds||[]).map(function(id){return data.kids.filter(function(k){return k.id===id;})[0];}).filter(Boolean);
         var who=kk.map(function(k){return k.name;}).join(", ");
-        var titleColor=(kk.length>=2?darken(th.p,0.62):(kk[0]?kk[0].color:"#20302A"));
+        var accent=(kk.length>=2?darken(th.p,0.62):(kk[0]?kk[0].color:th.p));
         meas.font='700 14.5px "'+cf+'", sans-serif';
         var lines=[];
-        wrapCanvas(meas, c.name+(who?"  ("+who+")":""), colW).forEach(function(tl,i){ lines.push({text:tl, size:14.5, w:700, color:titleColor, gap:i===0?0:2, indent:0}); });
-        function addW(label,val,size,color,topgap){ if(val==null||val==="") return; meas.font=size+'px "'+cf+'", sans-serif'; wrapCanvas(meas,label+": "+val,colW-8).forEach(function(l,i){ lines.push({text:l,size:size,w:400,color:color,gap:i===0?topgap:3,indent:6}); }); }
-        addW(t("loc"), c.location||"-", 12.5, "#46554E", 7);
-        lines.push({text:t("shuttle")+": "+(c.shuttle?t("yes"):t("no")), size:12.5, w:400, color:"#46554E", gap:3, indent:6});
+        wrapCanvas(meas, c.name+(who?"  ("+who+")":""), innerW).forEach(function(tl,i){ lines.push({text:tl, size:14.5, w:700, color:"#20302A", gap:i===0?0:2, indent:0}); });
+        function addW(label,val,size,color,topgap){ if(val==null||val==="") return; meas.font=size+'px "'+cf+'", sans-serif'; wrapCanvas(meas,label+": "+val,innerW-4).forEach(function(l,i){ lines.push({text:l,size:size,w:400,color:color,gap:i===0?topgap:3,indent:4}); }); }
+        addW(t("loc"), c.location||"-", 12.5, "#46554E", 8);
+        lines.push({text:t("shuttle")+": "+(c.shuttle?t("yes"):t("no")), size:12.5, w:400, color:"#46554E", gap:3, indent:4});
         if(c.supplies) addW(t("supplies"), c.supplies, 12.5, "#46554E", 3);
         if(c.memo && c.memo.trim()) addW(t("cls_memo"), c.memo, 12, "#8A968F", 5);
-        var h=lines.reduce(function(s,l){return s+l.gap+l.size;},0);
-        classBlocks.push({lines:lines,h:h});
+        var contentH=lines.reduce(function(s,l){return s+l.gap+l.size;},0);
+        classBlocks.push({lines:lines, accent:accent, h:contentH+cardPadV*2});
       });
     }
     var colY=[]; for(var ci0=0;ci0<nCols;ci0++) colY.push(0);
@@ -635,40 +644,54 @@ button:focus-visible, [tabindex]:focus-visible { outline:2px solid var(--primary
     classBlocks.forEach(function(b){ var mi=0; for(var ci1=1;ci1<nCols;ci1++){ if(colY[ci1]<colY[mi]) mi=ci1; } var g=colY[mi]>0?blockGap:0, yy=colY[mi]+g; placements.push({block:b,col:mi,y:yy}); colY[mi]=yy+b.h; });
     var classColsH=classBlocks.length?Math.max.apply(null,colY):0;
     var classH=classBlocks.length?(clsTitleMt+clsTitleSize+clsTitleGap+classColsH):0;
-    var H=gridBottom + (classBlocks.length? classH+14 : 0) + padTop;
+    var H=gridBottom + (classBlocks.length? classH+16 : 0) + padTop;
     var cv=document.createElement("canvas"); cv.width=W*scale; cv.height=H*scale; var ctx=cv.getContext("2d"); ctx.scale(scale,scale);
-    ctx.fillStyle="#FFFFFF"; ctx.fillRect(0,0,W,H);
+    ctx.fillStyle=th.bg||"#F2F5F1"; ctx.fillRect(0,0,W,H);
+    rrPath(ctx, cardM, cardM, W-cardM*2, H-cardM*2, 24); ctx.fillStyle="#FFFFFF"; ctx.fill();
+    ctx.strokeStyle=hexa(th.p,0.10); ctx.lineWidth=1; rrPath(ctx, cardM+0.5, cardM+0.5, W-cardM*2-1, H-cardM*2-1, 24); ctx.stroke();
     ctx.textBaseline="top"; ctx.textAlign="left";
-    ctx.fillStyle="#20302A"; ctx.font='700 26px "'+cd+'", sans-serif'; ctx.fillText(clipText(ctx,t("week_title")+" ("+weekRangeText(weekOffset)+")",W-padX*2), padX, padTop);
-    ctx.fillStyle="#6B7A72"; ctx.font='600 15px "'+cf+'", sans-serif'; ctx.fillText(termLabel().main + (data.term.onBreak?"  ("+t("brk")+")":""), padX, padTop+38);
+    rrPath(ctx, padX, padTop+2, 6, 30, 3); ctx.fillStyle=th.p; ctx.fill();
+    ctx.fillStyle="#1d2c26"; ctx.font='700 26px "'+cd+'", sans-serif'; ctx.fillText(clipText(ctx,t("week_title")+" ("+weekRangeText(weekOffset)+")",W-padX*2-16), padX+16, padTop);
+    ctx.fillStyle="#6B7A72"; ctx.font='600 15px "'+cf+'", sans-serif'; ctx.fillText(termLabel().main + (data.term.onBreak?"  ("+t("brk")+")":""), padX+16, padTop+36);
+    rrPath(ctx, padX, headerH, W-padX*2, colHeadH-8, 12); ctx.fillStyle=hexa(th.p,0.07); ctx.fill();
     ctx.textAlign="center";
-    vd.forEach(function(d,i){ ctx.textBaseline="top"; ctx.fillStyle="#6B7A72"; ctx.font='700 15px "'+cf+'", sans-serif'; ctx.fillText(dows()[d], padX+nameW+dayW*i+dayW/2, headerH+12); ctx.font='600 12px "'+cf+'", sans-serif'; ctx.fillStyle="#9aa6a0"; ctx.fillText((wd[i].getMonth()+1)+"/"+wd[i].getDate(), padX+nameW+dayW*i+dayW/2, headerH+32); });
-    ctx.strokeStyle="#E4E8E2"; ctx.lineWidth=1;
-    ctx.beginPath(); ctx.moveTo(padX,headerH); ctx.lineTo(padX,gridBottom); ctx.stroke();
-    for(var i2=0;i2<=nDays;i2++){ var x=padX+nameW+dayW*i2; ctx.beginPath(); ctx.moveTo(x,headerH); ctx.lineTo(x,gridBottom); ctx.stroke(); }
-    ctx.beginPath(); ctx.moveTo(padX,headerH); ctx.lineTo(W-padX,headerH); ctx.stroke();
-    ctx.beginPath(); ctx.moveTo(padX,gridTop); ctx.lineTo(W-padX,gridTop); ctx.stroke();
+    vd.forEach(function(d,i){ ctx.textBaseline="top"; ctx.fillStyle="#56655d"; ctx.font='700 15px "'+cf+'", sans-serif'; ctx.fillText(dows()[d], padX+nameW+dayW*i+dayW/2, headerH+9); ctx.font='600 12px "'+cf+'", sans-serif'; ctx.fillStyle="#9aa6a0"; ctx.fillText((wd[i].getMonth()+1)+"/"+wd[i].getDate(), padX+nameW+dayW*i+dayW/2, headerH+28); });
     var y=gridTop;
     kids.forEach(function(kid,ri){ var rh=rowH[ri];
-      ctx.fillStyle=kid.color; ctx.beginPath(); ctx.arc(padX+9,y+rh/2,5,0,7); ctx.fill();
-      ctx.fillStyle="#20302A"; ctx.font='700 14px "'+cf+'", sans-serif'; ctx.textAlign="left"; ctx.textBaseline="middle"; ctx.fillText(clipText(ctx,kid.name,nameW-28), padX+20, y+rh/2);
-      vd.forEach(function(d,i){ var cx=padX+nameW+dayW*i+dayW/2, acts=actsFor(kid.id,d,wk); ctx.textAlign="center"; ctx.textBaseline="top"; acts.forEach(function(a,ai){ var ty=y+rowPadV+ai*actBlockH; ctx.fillStyle=kid.color; ctx.font='700 10.5px "'+cf+'", sans-serif'; ctx.textAlign="center"; ctx.fillText(clipText(ctx,timeRange(a),dayW-6), cx, ty); if(a.makeup){ var mtxt=t("makeup"); ctx.font='800 8.5px "'+cf+'", sans-serif'; var bw=ctx.measureText(mtxt).width, gap=4, padH=4, pillW=bw+padH*2; ctx.font='700 12.5px "'+cf+'", sans-serif'; var lbl=clipText(ctx,a.label,Math.max(18,dayW-6-gap-pillW)), lw=ctx.measureText(lbl).width, total=lw+gap+pillW, sx=cx-total/2; ctx.textAlign="left"; ctx.fillStyle=kid.color; ctx.fillText(lbl, sx, ty+13); var bh=12, bx=sx+lw+gap, by=ty+14, rr=bh/2; ctx.beginPath(); ctx.moveTo(bx+rr,by); ctx.arcTo(bx+pillW,by,bx+pillW,by+bh,rr); ctx.arcTo(bx+pillW,by+bh,bx,by+bh,rr); ctx.arcTo(bx,by+bh,bx,by,rr); ctx.arcTo(bx,by,bx+pillW,by,rr); ctx.closePath(); ctx.fillStyle=kid.color; ctx.fill(); ctx.fillStyle="#fff"; ctx.font='800 8.5px "'+cf+'", sans-serif'; ctx.textBaseline="middle"; ctx.fillText(mtxt, bx+padH, by+bh/2+0.3); ctx.textBaseline="top"; ctx.textAlign="center"; } else { ctx.font='700 12.5px "'+cf+'", sans-serif'; ctx.fillStyle=kid.color; ctx.fillText(clipText(ctx,a.label,dayW-6), cx, ty+13); } }); });
-      ctx.strokeStyle="#E4E8E2"; ctx.beginPath(); ctx.moveTo(padX,y+rh); ctx.lineTo(W-padX,y+rh); ctx.stroke(); y+=rh;
+      ctx.fillStyle=kid.color; ctx.beginPath(); ctx.arc(padX+11,y+rh/2,5,0,7); ctx.fill();
+      ctx.fillStyle="#20302A"; ctx.font='700 14px "'+cf+'", sans-serif'; ctx.textAlign="left"; ctx.textBaseline="middle"; ctx.fillText(clipText(ctx,kid.name,nameW-30), padX+24, y+rh/2);
+      vd.forEach(function(d,i){ var cellL=padX+nameW+dayW*i, cx=cellL+dayW/2, acts=actsFor(kid.id,d,wk);
+        acts.forEach(function(a,ai){ var ty=y+rowPadV+ai*actBlockH;
+          rrPath(ctx, cellL+5, ty-3, dayW-10, actBlockH-7, 8); ctx.fillStyle=hexa(kid.color,0.13); ctx.fill();
+          ctx.textAlign="center"; ctx.textBaseline="top";
+          ctx.fillStyle=darken(kid.color,0.78); ctx.font='700 10.5px "'+cf+'", sans-serif'; ctx.fillText(clipText(ctx,timeRange(a),dayW-12), cx, ty);
+          if(a.makeup){ var mtxt=t("makeup"); ctx.font='800 8.5px "'+cf+'", sans-serif'; var bw=ctx.measureText(mtxt).width, gap=4, padH=4, pillW=bw+padH*2; ctx.font='700 12.5px "'+cf+'", sans-serif'; var lbl=clipText(ctx,a.label,Math.max(18,dayW-12-gap-pillW)), lw=ctx.measureText(lbl).width, total=lw+gap+pillW, sx=cx-total/2; ctx.textAlign="left"; ctx.fillStyle=darken(kid.color,0.7); ctx.fillText(lbl, sx, ty+13); var bh=12, bx=sx+lw+gap, by=ty+14, rr=bh/2; rrPath(ctx,bx,by,pillW,bh,rr); ctx.fillStyle=kid.color; ctx.fill(); ctx.fillStyle="#fff"; ctx.font='800 8.5px "'+cf+'", sans-serif'; ctx.textBaseline="middle"; ctx.fillText(mtxt, bx+padH, by+bh/2+0.3); ctx.textBaseline="top"; ctx.textAlign="center"; }
+          else { ctx.font='700 12.5px "'+cf+'", sans-serif'; ctx.fillStyle=darken(kid.color,0.7); ctx.fillText(clipText(ctx,a.label,dayW-12), cx, ty+13); }
+        });
+      });
+      if(ri<kids.length-1){ ctx.strokeStyle="#EEF1EE"; ctx.lineWidth=1; ctx.beginPath(); ctx.moveTo(padX+nameW,y+rh); ctx.lineTo(W-padX,y+rh); ctx.stroke(); }
+      y+=rh;
     });
     if(classBlocks.length){
-      var baseY=gridBottom+14;
+      var baseY=gridBottom+16;
       ctx.textAlign="left"; ctx.textBaseline="top";
-      ctx.font='700 '+clsTitleSize+'px "'+cf+'", sans-serif'; ctx.fillStyle="#20302A";
-      ctx.fillText(t("classinfo_title"), padX, baseY+clsTitleMt);
+      rrPath(ctx, padX, baseY+clsTitleMt+2, 5, clsTitleSize-1, 2.5); ctx.fillStyle=th.p; ctx.fill();
+      ctx.font='700 '+clsTitleSize+'px "'+cf+'", sans-serif'; ctx.fillStyle="#1d2c26";
+      ctx.fillText(t("classinfo_title"), padX+13, baseY+clsTitleMt);
       var colStartY=baseY+clsTitleMt+clsTitleSize+clsTitleGap;
       var colX=[]; for(var cx2=0;cx2<nCols;cx2++) colX.push(padX+cx2*(colW+colGap));
-      placements.forEach(function(p){ var bx0=colX[p.col], yy=colStartY+p.y; p.block.lines.forEach(function(l){ yy+=l.gap; ctx.font=(l.w===700?"700 ":"400 ")+l.size+'px "'+cf+'", sans-serif'; ctx.fillStyle=l.color; ctx.textAlign="left"; ctx.textBaseline="top"; ctx.fillText(l.clip?clipText(ctx,l.text,l.clip):l.text, bx0+(l.indent||0), yy); yy+=l.size; }); });
+      placements.forEach(function(p){ var bx0=colX[p.col], top=colStartY+p.y, b=p.block;
+        rrPath(ctx, bx0, top, colW, b.h, 14); ctx.fillStyle=hexa(th.p,0.05); ctx.fill();
+        rrPath(ctx, bx0+8, top+10, accentW, b.h-20, 2); ctx.fillStyle=b.accent; ctx.fill();
+        var yy=top+cardPadV, tx=bx0+8+accentW+10;
+        b.lines.forEach(function(l){ yy+=l.gap; ctx.font=(l.w===700?"700 ":"400 ")+l.size+'px "'+cf+'", sans-serif'; ctx.fillStyle=l.color; ctx.textAlign="left"; ctx.textBaseline="top"; ctx.fillText(l.text, tx+(l.indent||0), yy); yy+=l.size; });
+      });
     }
     return cv;
   }
   function downloadImage(wc, kidIds){ withFonts(function(){ var cv=buildScheduleCanvas(wc, kidIds); cv.toBlob(function(blob){ if(!blob) return; var url=URL.createObjectURL(blob), a=document.createElement("a"); a.href=url; a.download=imgFilename(); document.body.appendChild(a); a.click(); document.body.removeChild(a); setTimeout(function(){URL.revokeObjectURL(url);},1500); }); }); }
   function scheduleText(wc, kidIds){ var lines=[t("week_title")+" ("+weekRangeText(weekOffset)+")"], wk=curWeekKey(); var kids=(kidIds&&kidIds.length)?data.kids.filter(function(k){return kidIds.indexOf(k.id)>=0;}):data.kids; kids.forEach(function(kid){ lines.push("["+kid.name+"]"); visDays().forEach(function(d){ actsFor(kid.id,d,wk).forEach(function(a){ lines.push(dows()[d]+" "+timeRange(a)+" "+a.label+(a.makeup?" ["+t("makeup")+"]":"")); }); }); lines.push(""); });
-    if(wc){ var wcl=classesForWeek(curWeekKey()); if(kidIds&&kidIds.length){ wcl=wcl.filter(function(c){ return (c.kidIds||[]).some(function(id){return kidIds.indexOf(id)>=0;}); }); } if(wcl.length){ lines.push("— "+t("classinfo_title")+" —"); wcl.forEach(function(c){ var kk=(c.kidIds||[]).map(function(id){return data.kids.filter(function(k){return k.id===id;})[0];}).filter(Boolean); var who=kk.map(function(k){return k.name;}).join(", "); lines.push("• "+c.name+(who?" ("+who+")":"")); if(c.location) lines.push("  "+t("loc")+": "+c.location); lines.push("  "+t("shuttle")+": "+(c.shuttle?t("yes"):t("no"))); if(c.supplies) lines.push("  "+t("supplies")+": "+c.supplies); if(c.memo && c.memo.trim()) lines.push("  "+t("cls_memo")+": "+c.memo); }); } }
+    if(wc){ var wcl=classesForWeek(curWeekKey()); if(kidIds&&kidIds.length){ wcl=wcl.filter(function(c){ return (c.kidIds||[]).some(function(id){return kidIds.indexOf(id)>=0;}); }); } if(wcl.length){ lines.push("— "+t("classinfo_title")+" —"); lines.push(""); wcl.forEach(function(c){ var kk=(c.kidIds||[]).map(function(id){return data.kids.filter(function(k){return k.id===id;})[0];}).filter(Boolean); var who=kk.map(function(k){return k.name;}).join(", "); lines.push("• "+c.name+(who?" ("+who+")":"")); if(c.location) lines.push("  "+t("loc")+": "+c.location); lines.push("  "+t("shuttle")+": "+(c.shuttle?t("yes"):t("no"))); if(c.supplies) lines.push("  "+t("supplies")+": "+c.supplies); if(c.memo && c.memo.trim()) lines.push("  "+t("cls_memo")+": "+c.memo); lines.push(""); }); } }
     return lines.join("\n").trim(); }
   function toast(msg){ var el=document.createElement("div"); el.textContent=msg; el.style.cssText="position:fixed;left:50%;bottom:96px;transform:translateX(-50%);background:#20302A;color:#fff;padding:10px 16px;border-radius:12px;font-size:13.5px;font-weight:700;z-index:60;opacity:0;transition:opacity .2s;max-width:84%;text-align:center"; document.body.appendChild(el); requestAnimationFrame(function(){ el.style.opacity="1"; }); setTimeout(function(){ el.style.opacity="0"; setTimeout(function(){ if(el.parentNode) el.parentNode.removeChild(el); },300); },1900); }
   function shareSchedule(wc, kidIds){ var url=location.href, text=scheduleText(wc, kidIds); withFonts(function(){ var cv=buildScheduleCanvas(wc, kidIds); cv.toBlob(function(blob){ var file=null; try{ if(blob) file=new File([blob],imgFilename(),{type:"image/png"}); }catch(e){} if(file&&navigator.canShare&&navigator.canShare({files:[file]})){ navigator.share({files:[file],title:t("week_title"),text:text}).catch(function(){}); } else if(navigator.share){ navigator.share({title:t("week_title"),text:text,url:url}).catch(function(){}); } else if(navigator.clipboard){ navigator.clipboard.writeText(text+"\n"+url).then(function(){toast(t("copied"));}).catch(function(){toast(t("copied"));}); } else toast(t("copied")); }); }); }
@@ -756,8 +779,8 @@ button:focus-visible, [tabindex]:focus-visible { outline:2px solid var(--primary
     var titleline='<div class="as-sub" style="margin:0;display:flex;align-items:center;flex-wrap:wrap;gap:2px">'+t("week_title")+' <span style="font-weight:600;color:var(--muted)">('+weekRangeText(weekOffset)+')</span>'+arrows+'</div>';
     var seg='<div class="as-seg"><button class="as-seg-btn '+(layout==="grid"?"on":"")+'" data-act="week-layout" data-layout="grid">'+t("seg_table")+'</button><button class="as-seg-btn '+(layout==="list"?"on":"")+'" data-act="week-layout" data-layout="list">'+t("seg_byday")+'</button></div>';
     var wkndBtn='<button class="as-pill '+(data.showWeekend?"on":"")+'" data-act="toggle-weekend" style="height:30px;padding:0 11px;font-size:12.5px;min-width:0">'+t("weekend")+'</button>';
-    var controls='<div class="as-row" style="gap:8px;flex:none">'+seg+wkndBtn+'</div>';
-    var topbar='<div style="display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:10px">'+titleline+controls+'</div>';
+    var controls='<div class="as-row as-wkctrl" style="gap:8px;flex:none">'+seg+wkndBtn+'</div>';
+    var topbar='<div class="as-wktop" style="display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:10px">'+titleline+controls+'</div>';
     if(!data.kids.length) return '<div class="as-card">'+topbar+'<div class="as-empty">'+t("add_kid_first")+'</div></div>';
     var wkAny=data.kids.some(function(k){ return (data.schedule[k.id]||[]).some(function(a){ return a.days&&a.days.length; }); });
     var clearBtn=wkAny?'<button class="as-btn ghost" data-act="bulk-del" style="padding:6px 10px;font-size:12px;color:#c0392b">'+icon("trash",14)+' '+t("clear_week")+'</button>':'';
@@ -845,9 +868,13 @@ button:focus-visible, [tabindex]:focus-visible { outline:2px solid var(--primary
         '<div class="as-empty" style="padding:0 0 16px;line-height:1.5">'+msg+'</div>'+
         '<div class="as-row" style="justify-content:flex-end;gap:8px"><button class="as-btn ghost" data-act="bulk-cancel">'+t("cancel")+'</button><button class="as-btn primary" data-act="bulk-confirm" style="background:#c0392b">'+t("bulk_do")+'</button></div></div></div>';
     }
+    var bmulti=data.kids.length>1, bsel=bulkDel.sel||{};
+    var bselN=data.kids.filter(function(k){return bsel[k.id];}).length, bdis=bselN===0?'opacity:.4;pointer-events:none;':'';
+    var bkidPick=bmulti?('<div class="as-empty" style="padding:0 0 8px">'+t("del_who")+'</div><div class="as-row" style="flex-wrap:wrap;gap:8px;margin-bottom:14px">'+data.kids.map(function(k){return '<button class="as-pill '+(bsel[k.id]?"on":"")+'" data-act="bulk-kid" data-kid="'+k.id+'" style="display:inline-flex;align-items:center;gap:6px;height:32px;padding:0 12px"><span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:'+k.color+'"></span>'+esc(k.name||"—")+'</button>';}).join('')+'</div>'):'';
     return '<div class="as-pop" data-act="bulk-overlay"><div class="as-popcard"><div class="as-poptitle as-disp">'+t("bulk_title")+'</div>'+
+      bkidPick+
       '<div class="as-empty" style="padding:0 0 14px">'+t("bulk_q")+'</div>'+
-      '<div class="as-row" style="flex-direction:column;gap:8px"><button class="as-btn ghost" data-act="bulk-scope-one" style="width:100%;justify-content:center">'+t("scope_one")+'</button><button class="as-btn ghost" data-act="bulk-scope-following" style="width:100%;justify-content:center">'+t("scope_following")+'</button><button class="as-btn ghost" data-act="bulk-scope-all" style="width:100%;justify-content:center;color:#c0392b">'+t("scope_all")+'</button></div>'+
+      '<div class="as-row" style="flex-direction:column;gap:8px"><button class="as-btn ghost" data-act="bulk-scope-one" style="'+bdis+'width:100%;justify-content:center">'+t("scope_one")+'</button><button class="as-btn ghost" data-act="bulk-scope-following" style="'+bdis+'width:100%;justify-content:center">'+t("scope_following")+'</button><button class="as-btn ghost" data-act="bulk-scope-all" style="'+bdis+'width:100%;justify-content:center;color:#c0392b">'+t("scope_all")+'</button></div>'+
       '<div class="as-row" style="justify-content:center;margin-top:8px"><button class="as-btn ghost" data-act="bulk-cancel" style="border:none;color:var(--muted)">'+t("cancel")+'</button></div></div></div>';
   }
   function delKidPopupHTML(){
@@ -1008,11 +1035,12 @@ button:focus-visible, [tabindex]:focus-visible { outline:2px solid var(--primary
     else if(a==="del-following"){ var d2=delAct; delAct=null; removeActivityScoped(d2.kidId,d2.id,d2.weekKey,"following"); }
     else if(a==="del-cancel"){ delAct=null; render(); }
     else if(a==="del-overlay"){ if(e.target===el){ delAct=null; render(); } }
-    else if(a==="bulk-del"){ bulkDel={stage:"scope"}; render(); }
-    else if(a==="bulk-scope-one"){ bulkDel={stage:"confirm",scope:"one"}; render(); }
-    else if(a==="bulk-scope-following"){ bulkDel={stage:"confirm",scope:"following"}; render(); }
-    else if(a==="bulk-scope-all"){ bulkDel={stage:"confirm",scope:"all"}; render(); }
-    else if(a==="bulk-confirm"){ var bs=bulkDel?bulkDel.scope:"one"; bulkDel=null; bulkDeleteWeek(bs); toast(t("bulk_done")); }
+    else if(a==="bulk-del"){ var bsel0={}; data.kids.forEach(function(k){ bsel0[k.id]=true; }); bulkDel={stage:"scope", sel:bsel0}; render(); }
+    else if(a==="bulk-kid"){ if(bulkDel&&bulkDel.sel){ var bk=el.dataset.kid; bulkDel.sel[bk]=!bulkDel.sel[bk]; render(); } }
+    else if(a==="bulk-scope-one"){ if(bulkDel){ bulkDel.stage="confirm"; bulkDel.scope="one"; } render(); }
+    else if(a==="bulk-scope-following"){ if(bulkDel){ bulkDel.stage="confirm"; bulkDel.scope="following"; } render(); }
+    else if(a==="bulk-scope-all"){ if(bulkDel){ bulkDel.stage="confirm"; bulkDel.scope="all"; } render(); }
+    else if(a==="bulk-confirm"){ var bs=bulkDel?bulkDel.scope:"one"; var bids=(bulkDel&&bulkDel.sel)?data.kids.filter(function(k){return bulkDel.sel[k.id];}).map(function(k){return k.id;}):null; bulkDel=null; if(bids&&!bids.length){ render(); } else { bulkDeleteWeek(bs,bids); toast(t("bulk_done")); } }
     else if(a==="bulk-cancel"){ bulkDel=null; render(); }
     else if(a==="bulk-overlay"){ if(e.target===el){ bulkDel=null; render(); } }
     else if(a==="actv-close"){ actView=null; render(); }
@@ -1088,6 +1116,13 @@ button:focus-visible, [tabindex]:focus-visible { outline:2px solid var(--primary
     document.addEventListener('touchend', function(e){ var now=Date.now(); if(now-lastTouchEnd<=300){ e.preventDefault(); } lastTouchEnd=now; }, {passive:false});
   }catch(_){ }
 })();
+</script>
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function () {
+    navigator.serviceWorker.register('./sw.js').catch(function () {});
+  });
+}
 </script>
 </body>
 </html>
