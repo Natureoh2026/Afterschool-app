@@ -10,17 +10,8 @@
 <meta name="apple-mobile-web-app-title" content="After-School" />
 <meta name="theme-color" content="#2E6F5E" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%232E6F5E'/%3E%3Ccircle cx='50' cy='50' r='17' fill='none' stroke='white' stroke-width='8'/%3E%3Cpath d='M50 17v9M50 74v9M17 50h9M74 50h9' stroke='white' stroke-width='8' stroke-linecap='round'/%3E%3C/svg%3E" />
-<!-- PWA: 홈 화면 추가 / 앱 등록용 -->
-<link rel="manifest" href="./manifest.json" />
-<link rel="apple-touch-icon" href="./apple-touch-icon.png" />
-<link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png" />
-<link rel="icon" type="image/png" sizes="512x512" href="./icon-512.png" />
-<!-- 폰트: 렌더링을 막지 않도록 비차단 로드(실패/오프라인 시 system-ui로 자동 대체) -->
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&family=Gothic+A1:wght@400;500;700;800&family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@600;700&family=Zen+Maru+Gothic:wght@400;500;700&family=Mochiy+Pop+One&display=swap" media="print" onload="this.media='all'" />
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&family=Gothic+A1:wght@400;500;700;800&family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@600;700&family=Zen+Maru+Gothic:wght@400;500;700&family=Mochiy+Pop+One&display=swap" /></noscript>
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Jua&family=Gothic+A1:wght@400;500;700;800&family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@600;700&family=Zen+Maru+Gothic:wght@400;500;700&family=Mochiy+Pop+One&display=swap');
 * { box-sizing: border-box; }
 html, body { margin:0; padding:0; background:#F4F6F3; overscroll-behavior:none; touch-action:pan-x pan-y; }
 .as-root {
@@ -235,7 +226,7 @@ button:focus-visible, [tabindex]:focus-visible { outline:2px solid var(--primary
       settings:"Settings", language:"Language", save_image:"Save image", share:"Share", copied:"Copied to clipboard", edit_children:"Children",
       to_today:"Today", brk:"Break", year:"Year", term_title:"Year & term", term_word:"Term", on_break:"On break",
       achievement:"Routine tracker", this_month:"this month", close:"Close", stat_weekday:"Weekdays", stat_all:"All",
-      theme:"Theme", palette:"Color theme", text_size:"Text size", ts_sm:"Small", ts_md:"Medium", ts_lg:"Large", share_scope_q:"What to include?", export_who:"Which children?", scope_table_only:"Timetable only", scope_with_class:"Timetable + class info", add_home:"Add to Home Screen", add_home_title:"Add to Home Screen", add_home_ios:"iPhone (Safari): tap the Share button, then \u2018Add to Home Screen\u2019.", add_home_android:"Android (Chrome): tap the \u22ee menu, then \u2018Add to Home screen\u2019.", already_added:"It\u2019s already on your home screen.", reorder_hint:"Drag the \u2261 handle to reorder children.", del_scope_title:"Delete class", del_scope_q:"Which weeks should be removed?", clear_week:"Clear this week", bulk_title:"Delete this week", bulk_q:"How should this week\u2019s schedule be removed?", bulk_confirm_title:"Delete for sure?", bulk_confirm_one:"All of this week\u2019s activities will be deleted. This can\u2019t be undone.", bulk_confirm_following:"This week and all future activities will be deleted. This can\u2019t be undone.", bulk_do:"Delete", bulk_done:"This week\u2019s schedule was deleted.", share_app:"Share After-School", share_app_text:"Check out this After-School planner:", backup_title:"Backup", backup_hint:"Export this device\u2019s data to a file, then import it on another device to pick up where you left off.", backup_export:"Export", backup_import:"Import", backup_done:"Backup file exported.", backup_loaded:"Backup loaded.", backup_bad:"That\u2019s not a valid backup file.", backup_fail:"Something went wrong.", backup_confirm:"This will overwrite the data on this device. Continue?", kid_del_q:"All schedules and information for this child will be deleted. This can't be undone.", version:"Version" },
+      theme:"Theme", palette:"Color theme", text_size:"Text size", ts_sm:"Small", ts_md:"Medium", ts_lg:"Large", share_scope_q:"What to include?", export_who:"Which children?", scope_table_only:"Timetable only", scope_with_class:"Timetable + class info", add_home:"Add to Home Screen", add_home_title:"Add to Home Screen", add_home_ios:"iPhone (Safari): tap the Share button, then \u2018Add to Home Screen\u2019.", add_home_android:"Android (Chrome): tap the \u22ee menu, then \u2018Add to Home screen\u2019.", already_added:"It\u2019s already on your home screen.", reorder_hint:"Drag the \u2261 handle to reorder children.", del_scope_title:"Delete class", del_scope_q:"Which weeks should be removed?", clear_week:"Delete schedule", bulk_title:"Delete schedule", bulk_q:"What would you like to delete?", scope_all:"Delete all", bulk_confirm_all:"All schedules for every week will be deleted. This can't be undone.", bulk_confirm_title:"Delete for sure?", bulk_confirm_one:"All of this week\u2019s activities will be deleted. This can\u2019t be undone.", bulk_confirm_following:"This week and all future activities will be deleted. This can\u2019t be undone.", bulk_do:"Delete", bulk_done:"Schedule deleted.", share_app:"Share After-School", share_app_text:"Check out this After-School planner:", backup_title:"Backup", backup_hint:"Export this device\u2019s data to a file, then import it on another device to pick up where you left off.", backup_export:"Export", backup_import:"Import", backup_done:"Backup file exported.", backup_loaded:"Backup loaded.", backup_bad:"That\u2019s not a valid backup file.", backup_fail:"Something went wrong.", backup_confirm:"This will overwrite the data on this device. Continue?", kid_del_q:"All schedules and information for this child will be deleted. This can't be undone.", version:"Version" },
     ko: { dows:["일","월","화","수","목","금","토"], dowl:["일요일","월요일","화요일","수요일","목요일","금요일","토요일"],
       app_title:"우리집 방과 후", tab_today:"오늘", tab_week:"시간표", tab_edit:"편집",
       no_activities:"오늘은 방과 후 일정이 없어요 🌿", routines:"루틴", no_routines_today:"오늘 해당하는 루틴이 없어요.", today_todo:"할 일",
@@ -257,7 +248,7 @@ button:focus-visible, [tabindex]:focus-visible { outline:2px solid var(--primary
       settings:"설정", language:"언어", save_image:"이미지 저장", share:"공유", copied:"클립보드에 복사됨", edit_children:"아이별 설정",
       to_today:"오늘로", brk:"방학", year:"연도", term_title:"연도 · 학기", term_word:"학기", on_break:"방학 중",
       achievement:"루틴 기록", this_month:"이번 달", close:"닫기", stat_weekday:"평일만", stat_all:"전체",
-      theme:"테마", palette:"색상 테마", text_size:"글자 크기", ts_sm:"작게", ts_md:"보통", ts_lg:"크게", share_scope_q:"무엇을 포함할까요?", export_who:"출력할 아이", scope_table_only:"시간표만", scope_with_class:"시간표 + 수업 정보", add_home:"홈 화면에 추가", add_home_title:"홈 화면에 추가하기", add_home_ios:"아이폰(사파리): 아래 공유 버튼을 누른 뒤 \u2018홈 화면에 추가\u2019를 선택해요.", add_home_android:"안드로이드(크롬): 오른쪽 위 \u22ee 메뉴에서 \u2018홈 화면에 추가\u2019를 선택해요.", already_added:"이미 홈 화면에 추가되어 있어요.", reorder_hint:"≡ 손잡이를 끌어 아이 순서를 바꿔요.", del_scope_title:"일정 삭제", del_scope_q:"어느 범위를 삭제할까요?", clear_week:"이번 주 비우기", bulk_title:"이번 주 일정 삭제", bulk_q:"이번 주에 표시된 일정을 어떻게 삭제할까요?", bulk_confirm_title:"정말 삭제할까요?", bulk_confirm_one:"이번 주의 모든 일정이 삭제돼요. 되돌릴 수 없어요.", bulk_confirm_following:"이번 주부터 향후 모든 일정이 삭제돼요. 되돌릴 수 없어요.", bulk_do:"삭제", bulk_done:"이번 주 일정을 삭제했어요.", share_app:"방과 후 공유하기", share_app_text:"우리 아이 방과 후 일정 앱이에요. 한번 써보세요:", backup_title:"데이터 백업", backup_hint:"이 기기에 저장된 내용을 파일로 내보내고, 다른 기기에서 불러와 이어서 쓸 수 있어요.", backup_export:"내보내기", backup_import:"불러오기", backup_done:"백업 파일을 내보냈어요.", backup_loaded:"백업을 불러왔어요.", backup_bad:"올바른 백업 파일이 아니에요.", backup_fail:"처리 중 문제가 생겼어요.", backup_confirm:"지금 이 기기의 내용을 덮어써요. 계속할까요?", kid_del_q:"이 아이의 모든 일정과 정보가 삭제돼요. 되돌릴 수 없어요.", version:"버전" },
+      theme:"테마", palette:"색상 테마", text_size:"글자 크기", ts_sm:"작게", ts_md:"보통", ts_lg:"크게", share_scope_q:"무엇을 포함할까요?", export_who:"출력할 아이", scope_table_only:"시간표만", scope_with_class:"시간표 + 수업 정보", add_home:"홈 화면에 추가", add_home_title:"홈 화면에 추가하기", add_home_ios:"아이폰(사파리): 아래 공유 버튼을 누른 뒤 \u2018홈 화면에 추가\u2019를 선택해요.", add_home_android:"안드로이드(크롬): 오른쪽 위 \u22ee 메뉴에서 \u2018홈 화면에 추가\u2019를 선택해요.", already_added:"이미 홈 화면에 추가되어 있어요.", reorder_hint:"≡ 손잡이를 끌어 아이 순서를 바꿔요.", del_scope_title:"일정 삭제", del_scope_q:"어느 범위를 삭제할까요?", clear_week:"일정 삭제", bulk_title:"일정 삭제", bulk_q:"삭제할 범위를 선택하세요.", scope_all:"전체 삭제", bulk_confirm_all:"저장된 모든 주의 일정이 삭제돼요. 되돌릴 수 없어요.", bulk_confirm_title:"정말 삭제할까요?", bulk_confirm_one:"이번 주의 모든 일정이 삭제돼요. 되돌릴 수 없어요.", bulk_confirm_following:"이번 주부터 향후 모든 일정이 삭제돼요. 되돌릴 수 없어요.", bulk_do:"삭제", bulk_done:"일정을 삭제했어요.", share_app:"방과 후 공유하기", share_app_text:"우리 아이 방과 후 일정 앱이에요. 한번 써보세요:", backup_title:"데이터 백업", backup_hint:"이 기기에 저장된 내용을 파일로 내보내고, 다른 기기에서 불러와 이어서 쓸 수 있어요.", backup_export:"내보내기", backup_import:"불러오기", backup_done:"백업 파일을 내보냈어요.", backup_loaded:"백업을 불러왔어요.", backup_bad:"올바른 백업 파일이 아니에요.", backup_fail:"처리 중 문제가 생겼어요.", backup_confirm:"지금 이 기기의 내용을 덮어써요. 계속할까요?", kid_del_q:"이 아이의 모든 일정과 정보가 삭제돼요. 되돌릴 수 없어요.", version:"버전" },
     zh: { dows:["日","一","二","三","四","五","六"], dowl:["星期日","星期一","星期二","星期三","星期四","星期五","星期六"],
       app_title:"放学后", tab_today:"今天", tab_week:"课表", tab_edit:"编辑",
       no_activities:"今天没有课后安排 🌿", routines:"日常", no_routines_today:"今天没有日常任务。", today_todo:"待办",
@@ -279,7 +270,7 @@ button:focus-visible, [tabindex]:focus-visible { outline:2px solid var(--primary
       settings:"设置", language:"语言", save_image:"保存图片", share:"分享", copied:"已复制到剪贴板", edit_children:"孩子设置",
       to_today:"回到今天", brk:"假期", year:"年份", term_title:"年份 · 学期", term_word:"学期", on_break:"假期中",
       achievement:"日常打卡", this_month:"本月", close:"关闭", stat_weekday:"仅工作日", stat_all:"全部",
-      theme:"主题", palette:"配色", text_size:"字体大小", ts_sm:"小", ts_md:"中", ts_lg:"大", share_scope_q:"包含哪些内容？", export_who:"包含哪些孩子？", scope_table_only:"仅课表", scope_with_class:"课表 + 课程信息", add_home:"添加到主屏幕", add_home_title:"添加到主屏幕", add_home_ios:"iPhone(Safari)：点击分享按钮，选择\u201c添加到主屏幕\u201d。", add_home_android:"Android(Chrome)：点击右上角 \u22ee 菜单，选择\u201c添加到主屏幕\u201d。", already_added:"已经在主屏幕上了。", reorder_hint:"拖动 ≡ 手柄可调整孩子顺序。", del_scope_title:"删除安排", del_scope_q:"删除哪些周？", clear_week:"清空本周", bulk_title:"删除本周安排", bulk_q:"如何删除本周显示的安排？", bulk_confirm_title:"确定删除吗？", bulk_confirm_one:"本周的所有安排都会被删除，无法恢复。", bulk_confirm_following:"本周及以后的所有安排都会被删除，无法恢复。", bulk_do:"删除", bulk_done:"已删除本周安排。", share_app:"分享放学后", share_app_text:"推荐这个放学后日程应用：", backup_title:"数据备份", backup_hint:"将本设备的数据导出为文件，再在其他设备上导入，继续使用。", backup_export:"导出", backup_import:"导入", backup_done:"已导出备份文件。", backup_loaded:"已导入备份。", backup_bad:"不是有效的备份文件。", backup_fail:"出现了问题。", backup_confirm:"这将覆盖本设备上的数据。要继续吗？", kid_del_q:"该孩子的所有日程和信息都会被删除，且无法恢复。", version:"版本" },
+      theme:"主题", palette:"配色", text_size:"字体大小", ts_sm:"小", ts_md:"中", ts_lg:"大", share_scope_q:"包含哪些内容？", export_who:"包含哪些孩子？", scope_table_only:"仅课表", scope_with_class:"课表 + 课程信息", add_home:"添加到主屏幕", add_home_title:"添加到主屏幕", add_home_ios:"iPhone(Safari)：点击分享按钮，选择\u201c添加到主屏幕\u201d。", add_home_android:"Android(Chrome)：点击右上角 \u22ee 菜单，选择\u201c添加到主屏幕\u201d。", already_added:"已经在主屏幕上了。", reorder_hint:"拖动 ≡ 手柄可调整孩子顺序。", del_scope_title:"删除安排", del_scope_q:"删除哪些周？", clear_week:"删除日程", bulk_title:"删除日程", bulk_q:"请选择删除范围。", scope_all:"全部删除", bulk_confirm_all:"所有周的安排都会被删除，无法恢复。", bulk_confirm_title:"确定删除吗？", bulk_confirm_one:"本周的所有安排都会被删除，无法恢复。", bulk_confirm_following:"本周及以后的所有安排都会被删除，无法恢复。", bulk_do:"删除", bulk_done:"已删除安排。", share_app:"分享放学后", share_app_text:"推荐这个放学后日程应用：", backup_title:"数据备份", backup_hint:"将本设备的数据导出为文件，再在其他设备上导入，继续使用。", backup_export:"导出", backup_import:"导入", backup_done:"已导出备份文件。", backup_loaded:"已导入备份。", backup_bad:"不是有效的备份文件。", backup_fail:"出现了问题。", backup_confirm:"这将覆盖本设备上的数据。要继续吗？", kid_del_q:"该孩子的所有日程和信息都会被删除，且无法恢复。", version:"版本" },
     ja: { dows:["日","月","火","水","木","金","土"], dowl:["日曜日","月曜日","火曜日","水曜日","木曜日","金曜日","土曜日"],
       app_title:"放課後", tab_today:"今日", tab_week:"時間割", tab_edit:"編集",
       no_activities:"今日は放課後の予定がありません 🌿", routines:"ルーティン", no_routines_today:"今日のルーティンはありません。", today_todo:"やること",
@@ -301,7 +292,7 @@ button:focus-visible, [tabindex]:focus-visible { outline:2px solid var(--primary
       settings:"設定", language:"言語", save_image:"画像を保存", share:"共有", copied:"クリップボードにコピーしました", edit_children:"子どもの設定",
       to_today:"今日へ", brk:"休み", year:"年", term_title:"年 · 学期", term_word:"学期", on_break:"休み中",
       achievement:"ルーティン記録", this_month:"今月", close:"閉じる", stat_weekday:"平日のみ", stat_all:"すべて",
-      theme:"テーマ", palette:"カラー", text_size:"文字サイズ", ts_sm:"小", ts_md:"中", ts_lg:"大", share_scope_q:"何を含めますか？", export_who:"対象のお子さま", scope_table_only:"時間割のみ", scope_with_class:"時間割 + 教室情報", add_home:"ホーム画面に追加", add_home_title:"ホーム画面に追加", add_home_ios:"iPhone（Safari）：共有ボタンから\u300cホーム画面に追加\u300dを選びます。", add_home_android:"Android（Chrome）：右上の \u22ee メニューから\u300cホーム画面に追加\u300dを選びます。", already_added:"すでにホーム画面にあります。", reorder_hint:"≡ をドラッグして子どもの順番を変更。", del_scope_title:"予定を削除", del_scope_q:"どの範囲を削除しますか？", clear_week:"今週を空にする", bulk_title:"今週の予定を削除", bulk_q:"今週に表示された予定をどのように削除しますか？", bulk_confirm_title:"本当に削除しますか？", bulk_confirm_one:"今週のすべての予定が削除されます。元に戻せません。", bulk_confirm_following:"今週以降のすべての予定が削除されます。元に戻せません。", bulk_do:"削除", bulk_done:"今週の予定を削除しました。", share_app:"放課後を共有", share_app_text:"放課後の予定アプリです。どうぞ：", backup_title:"データのバックアップ", backup_hint:"この端末のデータをファイルに書き出し、別の端末で読み込んで続きを使えます。", backup_export:"エクスポート", backup_import:"インポート", backup_done:"バックアップファイルを書き出しました。", backup_loaded:"バックアップを読み込みました。", backup_bad:"有効なバックアップファイルではありません。", backup_fail:"問題が発生しました。", backup_confirm:"この端末のデータを上書きします。続けますか？", kid_del_q:"このお子さまのすべての予定と情報が削除されます。元に戻せません。", version:"バージョン" }
+      theme:"テーマ", palette:"カラー", text_size:"文字サイズ", ts_sm:"小", ts_md:"中", ts_lg:"大", share_scope_q:"何を含めますか？", export_who:"対象のお子さま", scope_table_only:"時間割のみ", scope_with_class:"時間割 + 教室情報", add_home:"ホーム画面に追加", add_home_title:"ホーム画面に追加", add_home_ios:"iPhone（Safari）：共有ボタンから\u300cホーム画面に追加\u300dを選びます。", add_home_android:"Android（Chrome）：右上の \u22ee メニューから\u300cホーム画面に追加\u300dを選びます。", already_added:"すでにホーム画面にあります。", reorder_hint:"≡ をドラッグして子どもの順番を変更。", del_scope_title:"予定を削除", del_scope_q:"どの範囲を削除しますか？", clear_week:"予定を削除", bulk_title:"予定を削除", bulk_q:"削除する範囲を選んでください。", scope_all:"すべて削除", bulk_confirm_all:"保存されたすべての週の予定が削除されます。元に戻せません。", bulk_confirm_title:"本当に削除しますか？", bulk_confirm_one:"今週のすべての予定が削除されます。元に戻せません。", bulk_confirm_following:"今週以降のすべての予定が削除されます。元に戻せません。", bulk_do:"削除", bulk_done:"予定を削除しました。", share_app:"放課後を共有", share_app_text:"放課後の予定アプリです。どうぞ：", backup_title:"データのバックアップ", backup_hint:"この端末のデータをファイルに書き出し、別の端末で読み込んで続きを使えます。", backup_export:"エクスポート", backup_import:"インポート", backup_done:"バックアップファイルを書き出しました。", backup_loaded:"バックアップを読み込みました。", backup_bad:"有効なバックアップファイルではありません。", backup_fail:"問題が発生しました。", backup_confirm:"この端末のデータを上書きします。続けますか？", kid_del_q:"このお子さまのすべての予定と情報が削除されます。元に戻せません。", version:"バージョン" }
   };
 
   var SEED = {
@@ -586,7 +577,7 @@ button:focus-visible, [tabindex]:focus-visible { outline:2px solid var(--primary
     if(scope==="one"){ data.schedule[kidId]=arr.filter(function(a){return a.id!==id;}); arr=data.schedule[kidId]; if(!oldFrom||oldFrom<wk) arr.push(mkSeg(oldVals,oldFrom,wk)); if(!oldUntil||oldUntil>nextWk) arr.push(mkSeg(oldVals,nextWk,oldUntil)); }
     else { if(seg.from===wk){ data.schedule[kidId]=arr.filter(function(a){return a.id!==id;}); } else { seg.until=wk; } }
     if(!defer) save(); }
-  function bulkDeleteWeek(scope){ var wk=curWeekKey(); data.kids.forEach(function(k){ var arr=data.schedule[k.id]||[]; var ids=arr.filter(function(a){ return a.days&&a.days.length&&segActive(a,wk); }).map(function(a){return a.id;}); ids.forEach(function(id){ removeActivityScoped(k.id,id,wk,scope,true); }); }); save(); }
+  function bulkDeleteWeek(scope){ if(scope==="all"){ data.kids.forEach(function(k){ data.schedule[k.id]=[]; }); save(); return; } var wk=curWeekKey(); data.kids.forEach(function(k){ var arr=data.schedule[k.id]||[]; var ids=arr.filter(function(a){ return a.days&&a.days.length&&segActive(a,wk); }).map(function(a){return a.id;}); ids.forEach(function(id){ removeActivityScoped(k.id,id,wk,scope,true); }); }); save(); }
   function syncClassForm(){ if(!classEdit) return; var n=byId("cls-name"),l=byId("cls-loc"),m=byId("cls-map"),s=byId("cls-supplies"),mo=byId("cls-memo"); if(n)classEdit.name=n.value; if(l)classEdit.location=l.value; if(m)classEdit.mapUrl=m.value; if(s)classEdit.supplies=s.value; if(mo)classEdit.memo=mo.value; }
   function openClassAdd(){ classEdit={id:null,name:"",kidIds:[],location:"",mapUrl:"",shuttle:false,supplies:"",memo:""}; render(); }
   function openClassEdit(id){ var c=(data.classes||[]).filter(function(x){return x.id===id;})[0]; if(c){ classEdit={id:c.id,name:c.name,kidIds:(c.kidIds||[]).slice(),location:c.location||"",mapUrl:c.mapUrl||"",shuttle:!!c.shuttle,supplies:c.supplies||"",memo:c.memo||""}; render(); } }
@@ -768,7 +759,7 @@ button:focus-visible, [tabindex]:focus-visible { outline:2px solid var(--primary
     var controls='<div class="as-row" style="gap:8px;flex:none">'+seg+wkndBtn+'</div>';
     var topbar='<div style="display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:10px">'+titleline+controls+'</div>';
     if(!data.kids.length) return '<div class="as-card">'+topbar+'<div class="as-empty">'+t("add_kid_first")+'</div></div>';
-    var wkAny=data.kids.some(function(k){ return (data.schedule[k.id]||[]).some(function(a){ return a.days&&a.days.length&&segActive(a,curWeekKey()); }); });
+    var wkAny=data.kids.some(function(k){ return (data.schedule[k.id]||[]).some(function(a){ return a.days&&a.days.length; }); });
     var clearBtn=wkAny?'<button class="as-btn ghost" data-act="bulk-del" style="padding:6px 10px;font-size:12px;color:#c0392b">'+icon("trash",14)+' '+t("clear_week")+'</button>':'';
     var tools='<div class="as-row" style="gap:6px;margin-bottom:12px;flex-wrap:wrap"><button class="as-btn ghost" data-act="dl-image" style="padding:6px 10px;font-size:12px">'+icon("image",14)+' '+t("save_image")+'</button><button class="as-btn ghost" data-act="share" style="padding:6px 10px;font-size:12px">'+icon("share",14)+' '+t("share")+'</button>'+clearBtn+'</div>';
     var content=layout==="list"?listHTML(wd):gridHTML(wd);
@@ -849,14 +840,14 @@ button:focus-visible, [tabindex]:focus-visible { outline:2px solid var(--primary
   function bulkDelPopupHTML(){
     if(!bulkDel) return '';
     if(bulkDel.stage==="confirm"){
-      var msg=bulkDel.scope==="one"?t("bulk_confirm_one"):t("bulk_confirm_following");
+      var msg=bulkDel.scope==="all"?t("bulk_confirm_all"):bulkDel.scope==="one"?t("bulk_confirm_one"):t("bulk_confirm_following");
       return '<div class="as-pop" data-act="bulk-overlay"><div class="as-popcard"><div class="as-poptitle as-disp">'+t("bulk_confirm_title")+'</div>'+
         '<div class="as-empty" style="padding:0 0 16px;line-height:1.5">'+msg+'</div>'+
         '<div class="as-row" style="justify-content:flex-end;gap:8px"><button class="as-btn ghost" data-act="bulk-cancel">'+t("cancel")+'</button><button class="as-btn primary" data-act="bulk-confirm" style="background:#c0392b">'+t("bulk_do")+'</button></div></div></div>';
     }
     return '<div class="as-pop" data-act="bulk-overlay"><div class="as-popcard"><div class="as-poptitle as-disp">'+t("bulk_title")+'</div>'+
       '<div class="as-empty" style="padding:0 0 14px">'+t("bulk_q")+'</div>'+
-      '<div class="as-row" style="flex-direction:column;gap:8px"><button class="as-btn ghost" data-act="bulk-scope-one" style="width:100%;justify-content:center">'+t("scope_one")+'</button><button class="as-btn ghost" data-act="bulk-scope-following" style="width:100%;justify-content:center">'+t("scope_following")+'</button></div>'+
+      '<div class="as-row" style="flex-direction:column;gap:8px"><button class="as-btn ghost" data-act="bulk-scope-one" style="width:100%;justify-content:center">'+t("scope_one")+'</button><button class="as-btn ghost" data-act="bulk-scope-following" style="width:100%;justify-content:center">'+t("scope_following")+'</button><button class="as-btn ghost" data-act="bulk-scope-all" style="width:100%;justify-content:center;color:#c0392b">'+t("scope_all")+'</button></div>'+
       '<div class="as-row" style="justify-content:center;margin-top:8px"><button class="as-btn ghost" data-act="bulk-cancel" style="border:none;color:var(--muted)">'+t("cancel")+'</button></div></div></div>';
   }
   function delKidPopupHTML(){
@@ -1020,6 +1011,7 @@ button:focus-visible, [tabindex]:focus-visible { outline:2px solid var(--primary
     else if(a==="bulk-del"){ bulkDel={stage:"scope"}; render(); }
     else if(a==="bulk-scope-one"){ bulkDel={stage:"confirm",scope:"one"}; render(); }
     else if(a==="bulk-scope-following"){ bulkDel={stage:"confirm",scope:"following"}; render(); }
+    else if(a==="bulk-scope-all"){ bulkDel={stage:"confirm",scope:"all"}; render(); }
     else if(a==="bulk-confirm"){ var bs=bulkDel?bulkDel.scope:"one"; bulkDel=null; bulkDeleteWeek(bs); toast(t("bulk_done")); }
     else if(a==="bulk-cancel"){ bulkDel=null; render(); }
     else if(a==="bulk-overlay"){ if(e.target===el){ bulkDel=null; render(); } }
@@ -1095,13 +1087,6 @@ button:focus-visible, [tabindex]:focus-visible { outline:2px solid var(--primary
     var lastTouchEnd=0;
     document.addEventListener('touchend', function(e){ var now=Date.now(); if(now-lastTouchEnd<=300){ e.preventDefault(); } lastTouchEnd=now; }, {passive:false});
   }catch(_){ }
-
-  // ── PWA: 서비스워커 등록 (오프라인 지원) ──
-  if ("serviceWorker" in navigator) {
-    window.addEventListener("load", function(){
-      navigator.serviceWorker.register("./service-worker.js").catch(function(){ /* 등록 실패해도 앱은 정상 동작 */ });
-    });
-  }
 })();
 </script>
 </body>
