@@ -27,7 +27,7 @@ html, body { margin:0; padding:0; background:#F4F6F3; overscroll-behavior:none; 
 .as-root.lang-ja { --font-body:'Zen Maru Gothic', system-ui, sans-serif; --font-disp:'Mochiy Pop One', system-ui, sans-serif; }
 .as-root.lang-zh { --font-body:'Noto Sans SC', system-ui, sans-serif; --font-disp:'Noto Serif SC', serif; }
 .as-root.lang-zh .as-disp, .as-root.lang-zh .as-kidname, .as-root.lang-zh .as-dayhd, .as-root.lang-zh .as-clsname, .as-root.lang-zh .cal-month, .as-root.lang-zh .as-poptitle { font-weight:600; }
-.as-scroll { flex:1 1 auto; min-height:0; overflow-y:auto; overscroll-behavior:contain; -webkit-overflow-scrolling:touch; }
+.as-scroll { flex:1 1 auto; min-height:0; overflow-y:auto; overflow-x:hidden; overscroll-behavior:contain; -webkit-overflow-scrolling:touch; }
 .as-wrap { max-width:760px; margin:0 auto; padding:max(30px, calc(env(safe-area-inset-top) + 14px)) 16px 28px; }
 .as-disp { font-family:var(--font-disp); font-weight:400; }
 .as-head { margin:6px 2px 18px; }
@@ -791,7 +791,7 @@ button:focus-visible, [tabindex]:focus-visible { outline:2px solid var(--primary
     var classHead='<div style="display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:8px"><div style="font-size:12px;font-weight:700;letter-spacing:.03em"><span style="color:var(--ink)">'+t("classinfo_title")+'</span> <span style="color:var(--muted);font-weight:600">'+t("classinfo_sub")+'</span></div><button class="as-btn ghost" data-act="cls-add" style="padding:6px 11px;font-size:12.5px">'+icon("plus",14)+' '+t("add")+'</button></div>';
     var weekClasses=classesForWeek(curWeekKey());
     var classBody=weekClasses.length?classCardsHTML(weekClasses):'<div class="as-clsempty">'+((data.classes&&data.classes.length)?t("no_classes_week"):t("no_classes"))+'</div>';
-    return '<div class="as-card">'+topbar+tools+content+hint+'<div class="as-divider" style="margin:16px 0 14px"></div>'+classHead+classBody+'</div>';
+    return '<div class="as-card" id="as-weekcard">'+topbar+tools+content+hint+'<div class="as-divider" style="margin:16px 0 14px"></div>'+classHead+classBody+'</div>';
   }
   function editHTML(){
     var langCard='<section class="as-card"><div class="as-sub" style="display:flex;align-items:center;gap:6px">'+icon("globe",15)+'<span>'+t("language")+'</span></div><div class="as-langgrid">'+
@@ -989,8 +989,8 @@ button:focus-visible, [tabindex]:focus-visible { outline:2px solid var(--primary
     else if(a==="crop-overlay"){ if(e.target===el){ cropState=null; render(); } }
     else if(a==="week-layout"){ data.weekLayout=el.dataset.layout; save(); }
     else if(a==="toggle-weekend"){ data.showWeekend=!data.showWeekend; save(); }
-    else if(a==="week-prev"){ weekOffset--; render(); }
-    else if(a==="week-next"){ weekOffset++; render(); }
+    else if(a==="week-prev"){ navWeek(-1); }
+    else if(a==="week-next"){ navWeek(1); }
     else if(a==="dl-image"){ openShareChoice("download"); }
     else if(a==="share"){ openShareChoice("share"); }
     else if(a==="sc-kid"){ if(shareChoice){ var sk=el.dataset.kid; shareChoice.sel[sk]=!shareChoice.sel[sk]; render(); } }
@@ -1085,6 +1085,38 @@ button:focus-visible, [tabindex]:focus-visible { outline:2px solid var(--primary
     else if(t2.matches&&t2.matches(".as-task")&&(e.key===" "||e.key==="Enter")){ e.preventDefault(); toggleItem(t2.dataset.kid,t2.dataset.task); }
     else if(t2.matches&&t2.matches(".as-avatar")&&(e.key===" "||e.key==="Enter")){ e.preventDefault(); pickPhoto(t2.dataset.kid); }
   });
+  var weekAnimating=false;
+  function navWeek(dir){
+    if(view!=="week"){ weekOffset+=dir; render(); return; }
+    if(weekAnimating) return;
+    var card=document.getElementById("as-weekcard");
+    if(!card){ weekOffset+=dir; render(); return; }
+    weekAnimating=true;
+    var dist=Math.min(64, Math.round((window.innerWidth||360)*0.11));
+    card.style.transition="transform .17s ease, opacity .17s ease";
+    card.style.transform="translateX("+(dir>0?-dist:dist)+"px)";
+    card.style.opacity="0";
+    var done=false;
+    function finish(){
+      if(done) return; done=true;
+      weekOffset+=dir; render();
+      var nc=document.getElementById("as-weekcard");
+      if(nc){
+        nc.style.transition="none";
+        nc.style.transform="translateX("+(dir>0?dist:-dist)+"px)";
+        nc.style.opacity="0";
+        void nc.offsetWidth;
+        requestAnimationFrame(function(){
+          nc.style.transition="transform .2s ease, opacity .2s ease";
+          nc.style.transform="translateX(0)";
+          nc.style.opacity="1";
+        });
+      }
+      setTimeout(function(){ weekAnimating=false; }, 210);
+    }
+    card.addEventListener("transitionend", finish, {once:true});
+    setTimeout(finish, 200);
+  }
   (function(){
     var sx=0, sy=0, st=0, swipeOk=false;
     function noSwipe(node){
@@ -1112,8 +1144,7 @@ button:focus-visible, [tabindex]:focus-visible { outline:2px solid var(--primary
       var dx=p.clientX-sx, dy=p.clientY-sy;
       if(Date.now()-st>700) return;
       if(Math.abs(dx)<55||Math.abs(dx)<Math.abs(dy)*1.8) return;
-      if(dx<0) weekOffset++; else weekOffset--;
-      render();
+      navWeek(dx<0?1:-1);
     }, {passive:true});
   })();
 
