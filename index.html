@@ -81,7 +81,9 @@ html, body { margin:0; padding:0; background:#F4F6F3; overscroll-behavior:none; 
 .as-grid th, .as-grid td { border-bottom:1px solid var(--line); padding:8px 6px; vertical-align:top; }
 .as-grid th { font-size:12.5px; color:var(--muted); font-weight:700; text-align:center; }
 .as-grid th.namecol, .as-grid td.namecol { text-align:left; width:78px; position:sticky; left:0; background:var(--paper); }
-.as-grid td.today-col, .as-grid th.today-col { background:var(--primary-soft); }
+.as-grid td.today-col, .as-grid th.today-col { background:var(--primary-soft); box-shadow:inset 1.5px 0 0 var(--primary), inset -1.5px 0 0 var(--primary); }
+.as-grid th.today-col { box-shadow:inset 1.5px 0 0 var(--primary), inset -1.5px 0 0 var(--primary), inset 0 2px 0 var(--primary); border-radius:8px 8px 0 0; }
+.as-grid tbody tr:last-child td.today-col { box-shadow:inset 1.5px 0 0 var(--primary), inset -1.5px 0 0 var(--primary), inset 0 -1.5px 0 var(--primary); border-radius:0 0 8px 8px; }
 .as-grid td.namecol .as-knmwrap { display:flex; flex-direction:column; align-items:center; gap:5px; }
 .as-grid td.namecol .as-knm { font-weight:700; font-size:13.5px; line-height:1.15; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; min-width:0; max-width:100%; }
 @media (max-width:560px){
@@ -100,7 +102,7 @@ html, body { margin:0; padding:0; background:#F4F6F3; overscroll-behavior:none; 
 .as-cell { display:flex; flex-direction:column; gap:5px; min-height:34px; }
 .as-daylist { display:flex; flex-direction:column; gap:10px; }
 .as-daycard { border:1px solid var(--line); border-radius:14px; padding:10px 12px; }
-.as-daycard.today { border-color:var(--primary); background:var(--primary-soft); }
+.as-daycard.today { border-color:var(--primary); border-width:2px; background:var(--primary-soft); }
 .as-dayhd { font-family:var(--font-disp); font-size:calc(15px * var(--fs)); margin-bottom:6px; display:flex; align-items:center; gap:7px; }
 .as-dayhd .dt { font-family:var(--font-body); font-size:12px; font-weight:700; color:var(--muted); }
 .as-dayhd .tag { font-family:var(--font-body); font-size:11px; font-weight:700; color:#fff; background:var(--primary); border-radius:6px; padding:1px 7px; }
@@ -230,7 +232,7 @@ button:focus-visible, [tabindex]:focus-visible { outline:2px solid var(--primary
       act_from_note:"Applies from this week on. Earlier weeks stay unchanged.",
       scope_label:"Apply to", scope_one:"This week only", scope_following:"This & future",
       settings:"Settings", language:"Language", save_image:"Save image", share:"Share", copied:"Copied to clipboard", edit_children:"Children",
-      to_today:"Today", brk:"Break", year:"Year", term_title:"Terms", term_hint:"Set a name and start date for each term. The matching term shows automatically for each week — a week containing a new term\u2019s start date switches to that term.", term_name_ph:"Term name (e.g. Term 1)", term_add:"Add term", term_empty:"No terms yet.", term_word:"Term", on_break:"On break",
+      to_today:"Today", brk:"Break", year:"Year", term_title:"Terms", term_hint:"Set a name and start date for each term. The matching term shows automatically for each week — a week containing a new term\u2019s start date switches to that term.", term_name_ph:"Term name (e.g. Term 1)", term_add:"Add term", term_empty:"No terms yet.", term_p1:"Term 1", term_p2:"Term 2", term_p3:"Term 3", term_p4:"Term 4", term_spring:"Spring break", term_summer:"Summer break", term_autumn:"Autumn break", term_winter:"Winter break", term_break:"Break", term_custom:"Custom", term_word:"Term", on_break:"On break",
       achievement:"Routine tracker", this_month:"this month", close:"Close", stat_weekday:"Weekdays", stat_all:"All",
       theme:"Theme", palette:"Color theme", text_size:"Text size", ts_sm:"Small", ts_md:"Medium", ts_lg:"Large", share_scope_q:"What to include?", export_who:"Which children?", del_who:"Which children?", scope_table_only:"Timetable only", scope_with_class:"Timetable + class info", add_home:"Add to Home Screen", add_home_title:"Add to Home Screen", add_home_ios:"iPhone (Safari): tap the Share button, then \u2018Add to Home Screen\u2019.", add_home_android:"Android (Chrome): tap the \u22ee menu, then \u2018Add to Home screen\u2019.", already_added:"It\u2019s already on your home screen.", reorder_hint:"Drag the \u2261 handle to reorder children.", del_scope_title:"Delete class", del_scope_q:"Which weeks should be removed?", clear_week:"Delete schedule", bulk_title:"Delete schedule", bulk_q:"What would you like to delete?", scope_all:"Delete all", bulk_confirm_all:"All schedules for every week will be deleted. This can't be undone.", bulk_confirm_title:"Delete for sure?", bulk_confirm_one:"All of this week\u2019s activities will be deleted. This can\u2019t be undone.", bulk_confirm_following:"This week and all future activities will be deleted. This can\u2019t be undone.", bulk_do:"Delete", bulk_done:"Schedule deleted.", share_app:"Share After-School", share_app_text:"Check out this After-School planner:", backup_title:"Backup", backup_hint:"Export this device\u2019s data to a file, then import it on another device to pick up where you left off.", backup_export:"Export", backup_import:"Import", backup_done:"Backup file exported.", backup_loaded:"Backup loaded.", backup_bad:"That\u2019s not a valid backup file.", backup_fail:"Something went wrong.", backup_confirm:"This will overwrite the data on this device. Continue?", kid_del_q:"All schedules and information for this child will be deleted. This can't be undone.", version:"Version" },
     ko: { dows:["일","월","화","수","목","금","토"], dowl:["일요일","월요일","화요일","수요일","목요일","금요일","토요일"],
@@ -252,7 +254,7 @@ button:focus-visible, [tabindex]:focus-visible { outline:2px solid var(--primary
       act_from_note:"이번 주부터 적용돼요. 이전 주는 그대로예요.",
       scope_label:"적용 범위", scope_one:"이번 주만", scope_following:"이번 주부터 모두",
       settings:"설정", language:"언어", save_image:"이미지 저장", share:"공유", copied:"클립보드에 복사됨", edit_children:"아이별 설정",
-      to_today:"오늘로", brk:"방학", year:"연도", term_title:"학기 설정", term_hint:"학기마다 이름과 시작일을 정하면, 보는 주에 맞는 학기가 자동으로 표시돼요. 새 학기 시작일이 든 주부터 새 학기로 바뀌어요.", term_name_ph:"학기 이름 (예: 1학기)", term_add:"학기 추가", term_empty:"아직 등록된 학기가 없어요.", term_word:"학기", on_break:"방학 중",
+      to_today:"오늘로", brk:"방학", year:"연도", term_title:"학기 설정", term_hint:"학기마다 이름과 시작일을 정하면, 보는 주에 맞는 학기가 자동으로 표시돼요. 새 학기 시작일이 든 주부터 새 학기로 바뀌어요.", term_name_ph:"학기 이름 (예: 1학기)", term_add:"학기 추가", term_empty:"아직 등록된 학기가 없어요.", term_p1:"1학기", term_p2:"2학기", term_p3:"3학기", term_p4:"4학기", term_spring:"봄방학", term_summer:"여름방학", term_autumn:"가을방학", term_winter:"겨울방학", term_break:"방학", term_custom:"직접 입력", term_word:"학기", on_break:"방학 중",
       achievement:"루틴 기록", this_month:"이번 달", close:"닫기", stat_weekday:"평일만", stat_all:"전체",
       theme:"테마", palette:"색상 테마", text_size:"글자 크기", ts_sm:"작게", ts_md:"보통", ts_lg:"크게", share_scope_q:"무엇을 포함할까요?", export_who:"출력할 아이", del_who:"삭제할 아이", scope_table_only:"시간표만", scope_with_class:"시간표 + 수업 정보", add_home:"홈 화면에 추가", add_home_title:"홈 화면에 추가하기", add_home_ios:"아이폰(사파리): 아래 공유 버튼을 누른 뒤 \u2018홈 화면에 추가\u2019를 선택해요.", add_home_android:"안드로이드(크롬): 오른쪽 위 \u22ee 메뉴에서 \u2018홈 화면에 추가\u2019를 선택해요.", already_added:"이미 홈 화면에 추가되어 있어요.", reorder_hint:"≡ 손잡이를 끌어 아이 순서를 바꿔요.", del_scope_title:"일정 삭제", del_scope_q:"어느 범위를 삭제할까요?", clear_week:"일정 삭제", bulk_title:"일정 삭제", bulk_q:"삭제할 범위를 선택하세요.", scope_all:"전체 삭제", bulk_confirm_all:"저장된 모든 주의 일정이 삭제돼요. 되돌릴 수 없어요.", bulk_confirm_title:"정말 삭제할까요?", bulk_confirm_one:"이번 주의 모든 일정이 삭제돼요. 되돌릴 수 없어요.", bulk_confirm_following:"이번 주부터 향후 모든 일정이 삭제돼요. 되돌릴 수 없어요.", bulk_do:"삭제", bulk_done:"일정을 삭제했어요.", share_app:"방과 후 공유하기", share_app_text:"우리 아이 방과 후 일정 앱이에요. 한번 써보세요:", backup_title:"데이터 백업", backup_hint:"이 기기에 저장된 내용을 파일로 내보내고, 다른 기기에서 불러와 이어서 쓸 수 있어요.", backup_export:"내보내기", backup_import:"불러오기", backup_done:"백업 파일을 내보냈어요.", backup_loaded:"백업을 불러왔어요.", backup_bad:"올바른 백업 파일이 아니에요.", backup_fail:"처리 중 문제가 생겼어요.", backup_confirm:"지금 이 기기의 내용을 덮어써요. 계속할까요?", kid_del_q:"이 아이의 모든 일정과 정보가 삭제돼요. 되돌릴 수 없어요.", version:"버전" },
     zh: { dows:["日","一","二","三","四","五","六"], dowl:["星期日","星期一","星期二","星期三","星期四","星期五","星期六"],
@@ -274,7 +276,7 @@ button:focus-visible, [tabindex]:focus-visible { outline:2px solid var(--primary
       act_from_note:"从本周起生效，之前的周保持不变。",
       scope_label:"应用范围", scope_one:"仅本周", scope_following:"本周及以后",
       settings:"设置", language:"语言", save_image:"保存图片", share:"分享", copied:"已复制到剪贴板", edit_children:"孩子设置",
-      to_today:"回到今天", brk:"假期", year:"年份", term_title:"学期设置", term_hint:"为每个学期设置名称和开始日期，系统会按所查看的周自动显示对应学期；包含新学期开始日的那一周起切换为新学期。", term_name_ph:"学期名称（例：第1学期）", term_add:"添加学期", term_empty:"还没有学期。", term_word:"学期", on_break:"假期中",
+      to_today:"回到今天", brk:"假期", year:"年份", term_title:"学期设置", term_hint:"为每个学期设置名称和开始日期，系统会按所查看的周自动显示对应学期；包含新学期开始日的那一周起切换为新学期。", term_name_ph:"学期名称（例：第1学期）", term_add:"添加学期", term_empty:"还没有学期。", term_p1:"第1学期", term_p2:"第2学期", term_p3:"第3学期", term_p4:"第4学期", term_spring:"春假", term_summer:"暑假", term_autumn:"秋假", term_winter:"寒假", term_break:"假期", term_custom:"自定义", term_word:"学期", on_break:"假期中",
       achievement:"日常打卡", this_month:"本月", close:"关闭", stat_weekday:"仅工作日", stat_all:"全部",
       theme:"主题", palette:"配色", text_size:"字体大小", ts_sm:"小", ts_md:"中", ts_lg:"大", share_scope_q:"包含哪些内容？", export_who:"包含哪些孩子？", del_who:"删除哪些孩子？", scope_table_only:"仅课表", scope_with_class:"课表 + 课程信息", add_home:"添加到主屏幕", add_home_title:"添加到主屏幕", add_home_ios:"iPhone(Safari)：点击分享按钮，选择\u201c添加到主屏幕\u201d。", add_home_android:"Android(Chrome)：点击右上角 \u22ee 菜单，选择\u201c添加到主屏幕\u201d。", already_added:"已经在主屏幕上了。", reorder_hint:"拖动 ≡ 手柄可调整孩子顺序。", del_scope_title:"删除安排", del_scope_q:"删除哪些周？", clear_week:"删除日程", bulk_title:"删除日程", bulk_q:"请选择删除范围。", scope_all:"全部删除", bulk_confirm_all:"所有周的安排都会被删除，无法恢复。", bulk_confirm_title:"确定删除吗？", bulk_confirm_one:"本周的所有安排都会被删除，无法恢复。", bulk_confirm_following:"本周及以后的所有安排都会被删除，无法恢复。", bulk_do:"删除", bulk_done:"已删除安排。", share_app:"分享放学后", share_app_text:"推荐这个放学后日程应用：", backup_title:"数据备份", backup_hint:"将本设备的数据导出为文件，再在其他设备上导入，继续使用。", backup_export:"导出", backup_import:"导入", backup_done:"已导出备份文件。", backup_loaded:"已导入备份。", backup_bad:"不是有效的备份文件。", backup_fail:"出现了问题。", backup_confirm:"这将覆盖本设备上的数据。要继续吗？", kid_del_q:"该孩子的所有日程和信息都会被删除，且无法恢复。", version:"版本" },
     ja: { dows:["日","月","火","水","木","金","土"], dowl:["日曜日","月曜日","火曜日","水曜日","木曜日","金曜日","土曜日"],
@@ -296,7 +298,7 @@ button:focus-visible, [tabindex]:focus-visible { outline:2px solid var(--primary
       act_from_note:"今週から適用されます。過去の週はそのままです。",
       scope_label:"適用範囲", scope_one:"今週のみ", scope_following:"今週以降すべて",
       settings:"設定", language:"言語", save_image:"画像を保存", share:"共有", copied:"クリップボードにコピーしました", edit_children:"子どもの設定",
-      to_today:"今日へ", brk:"休み", year:"年", term_title:"学期設定", term_hint:"学期ごとに名前と開始日を設定すると、表示中の週に応じて学期名が自動で表示されます。新学期の開始日を含む週から新学期に切り替わります。", term_name_ph:"学期名（例：1学期）", term_add:"学期を追加", term_empty:"まだ学期がありません。", term_word:"学期", on_break:"休み中",
+      to_today:"今日へ", brk:"休み", year:"年", term_title:"学期設定", term_hint:"学期ごとに名前と開始日を設定すると、表示中の週に応じて学期名が自動で表示されます。新学期の開始日を含む週から新学期に切り替わります。", term_name_ph:"学期名（例：1学期）", term_add:"学期を追加", term_empty:"まだ学期がありません。", term_p1:"1学期", term_p2:"2学期", term_p3:"3学期", term_p4:"4学期", term_spring:"春休み", term_summer:"夏休み", term_autumn:"秋休み", term_winter:"冬休み", term_break:"休み", term_custom:"自由入力", term_word:"学期", on_break:"休み中",
       achievement:"ルーティン記録", this_month:"今月", close:"閉じる", stat_weekday:"平日のみ", stat_all:"すべて",
       theme:"テーマ", palette:"カラー", text_size:"文字サイズ", ts_sm:"小", ts_md:"中", ts_lg:"大", share_scope_q:"何を含めますか？", export_who:"対象のお子さま", del_who:"対象のお子さま", scope_table_only:"時間割のみ", scope_with_class:"時間割 + 教室情報", add_home:"ホーム画面に追加", add_home_title:"ホーム画面に追加", add_home_ios:"iPhone（Safari）：共有ボタンから\u300cホーム画面に追加\u300dを選びます。", add_home_android:"Android（Chrome）：右上の \u22ee メニューから\u300cホーム画面に追加\u300dを選びます。", already_added:"すでにホーム画面にあります。", reorder_hint:"≡ をドラッグして子どもの順番を変更。", del_scope_title:"予定を削除", del_scope_q:"どの範囲を削除しますか？", clear_week:"予定を削除", bulk_title:"予定を削除", bulk_q:"削除する範囲を選んでください。", scope_all:"すべて削除", bulk_confirm_all:"保存されたすべての週の予定が削除されます。元に戻せません。", bulk_confirm_title:"本当に削除しますか？", bulk_confirm_one:"今週のすべての予定が削除されます。元に戻せません。", bulk_confirm_following:"今週以降のすべての予定が削除されます。元に戻せません。", bulk_do:"削除", bulk_done:"予定を削除しました。", share_app:"放課後を共有", share_app_text:"放課後の予定アプリです。どうぞ：", backup_title:"データのバックアップ", backup_hint:"この端末のデータをファイルに書き出し、別の端末で読み込んで続きを使えます。", backup_export:"エクスポート", backup_import:"インポート", backup_done:"バックアップファイルを書き出しました。", backup_loaded:"バックアップを読み込みました。", backup_bad:"有効なバックアップファイルではありません。", backup_fail:"問題が発生しました。", backup_confirm:"この端末のデータを上書きします。続けますか？", kid_del_q:"このお子さまのすべての予定と情報が削除されます。元に戻せません。", version:"バージョン" }
   };
@@ -377,9 +379,23 @@ button:focus-visible, [tabindex]:focus-visible { outline:2px solid var(--primary
   function monthLabelText(y,m){ var lang=data.lang; if(lang==="en") return EN_MONTHS[m]+" "+y; if(lang==="ko") return y+"년 "+(m+1)+"월"; return y+"年"+(m+1)+"月"; }
   function sortedTerms(){ return (data.terms||[]).filter(function(tm){return tm&&tm.start;}).slice().sort(function(a,b){return a.start<b.start?-1:(a.start>b.start?1:0);}); }
   function termForWeek(offset){ var terms=sortedTerms(); if(!terms.length) return null; var mon=weekMonday(offset); var sun=new Date(mon.getFullYear(),mon.getMonth(),mon.getDate()); sun.setDate(sun.getDate()+6); var sunKey=todayKey(sun); var chosen=null; for(var i=0;i<terms.length;i++){ if(terms[i].start<=sunKey) chosen=terms[i]; else break; } return chosen; }
+  var TERM_KINDS=[["t1","term_p1"],["t2","term_p2"],["t3","term_p3"],["t4","term_p4"],["spring","term_spring"],["summer","term_summer"],["autumn","term_autumn"],["winter","term_winter"]];
+  function termYear(tm){ return (tm&&tm.start&&tm.start.length>=4)?tm.start.slice(0,4):""; }
+  function termDisplayName(tm){
+    if(!tm) return "";
+    if(tm.kind==="custom") return (tm.name&&tm.name.trim())?tm.name.trim():t("term_word");
+    var label="";
+    for(var i=0;i<TERM_KINDS.length;i++) if(TERM_KINDS[i][0]===tm.kind){ label=t(TERM_KINDS[i][1]); break; }
+    if(!label) label=(tm.name&&tm.name.trim())?tm.name.trim():t("term_word");
+    var yr=termYear(tm); if(!yr) return label;
+    var lang=data.lang;
+    if(lang==="ko") return yr+"년 "+label;
+    if(lang==="zh"||lang==="ja") return yr+"年 "+label;
+    return yr+" "+label;
+  }
   function termLabel(){
     var terms=sortedTerms();
-    if(terms.length){ var tf=termForWeek(weekOffset); return { main: tf ? ((tf.name&&tf.name.trim())?tf.name.trim():t("term_word")) : "", badge:"" }; }
+    if(terms.length){ var tf=termForWeek(weekOffset); return { main: tf?termDisplayName(tf):"", badge:"" }; }
     var tm=data.term, y=tm.year, n=tm.term, lang=data.lang, main;
     if(lang==="ko") main=y+"년 "+n+"학기"; else if(lang==="en") main=y+" Term "+n; else if(lang==="zh") main=y+"年 第"+n+"学期"; else main=y+"年 "+n+"学期";
     return { main:main, badge: tm.onBreak ? t("brk") : "" }; }
@@ -420,6 +436,7 @@ button:focus-visible, [tabindex]:focus-visible { outline:2px solid var(--primary
         if(LANGS.indexOf(p.lang)<0) p.lang="ko";
         if(!p.term) p.term={year:new Date().getFullYear(),term:1,onBreak:false};
         if(!Array.isArray(p.terms)) p.terms=[];
+        p.terms.forEach(function(tm){ if(tm&&!tm.kind) tm.kind="custom"; });
         if(typeof p.term.year!=="number") p.term.year=new Date().getFullYear();
         if(typeof p.term.term!=="number") p.term.term=1;
         if(!p.theme) p.theme={color:"forest"};
@@ -945,11 +962,13 @@ button:focus-visible, [tabindex]:focus-visible { outline:2px solid var(--primary
     if(!termEdit) return '';
     var terms=sortedTerms();
     var rows = terms.length ? terms.map(function(tm){
-      return '<div class="as-row" style="gap:6px;margin-bottom:8px;align-items:center">'+
-        '<input class="as-input" style="flex:1.2;min-width:0" placeholder="'+esc(t("term_name_ph"))+'" value="'+esc(tm.name||"")+'" data-termname data-id="'+tm.id+'" />'+
-        '<input class="as-input" style="flex:1;min-width:0" type="date" value="'+esc(tm.start||"")+'" data-termdate data-id="'+tm.id+'" />'+
-        '<button class="as-iconbtn danger" data-act="term-del" data-id="'+tm.id+'" aria-label="'+t("del")+'">'+icon("trash",16)+'</button>'+
-        '</div>';
+      var kind=tm.kind||"custom";
+      var opts=TERM_KINDS.map(function(k){return '<option value="'+k[0]+'"'+(kind===k[0]?' selected':'')+'>'+t(k[1])+'</option>';}).join('')+'<option value="custom"'+(kind==="custom"?' selected':'')+'>'+t("term_custom")+'</option>';
+      var sel='<select class="as-input" data-termkind data-id="'+tm.id+'" style="flex:1.1;min-width:0">'+opts+'</select>';
+      var dateInput='<input class="as-input" style="flex:1;min-width:0" type="date" value="'+esc(tm.start||"")+'" data-termdate data-id="'+tm.id+'" />';
+      var trash='<button class="as-iconbtn danger" data-act="term-del" data-id="'+tm.id+'" aria-label="'+t("del")+'">'+icon("trash",16)+'</button>';
+      var custom=kind==="custom"?'<div style="margin:0 0 10px"><input class="as-input" style="width:100%" placeholder="'+esc(t("term_name_ph"))+'" value="'+esc(tm.name||"")+'" data-termname data-id="'+tm.id+'" /></div>':'';
+      return '<div class="as-row" style="gap:6px;margin-bottom:'+(kind==="custom"?"4px":"8px")+';align-items:center">'+sel+dateInput+trash+'</div>'+custom;
     }).join('') : '<div class="as-empty" style="padding:4px 2px 10px;font-size:12px">'+t("term_empty")+'</div>';
     return '<div class="as-pop" data-act="term-overlay"><div class="as-popcard"><div class="as-poptitle as-disp">'+t("term_title")+'</div>'+
       '<div class="as-empty" style="padding:0 2px 12px;font-size:11.5px;line-height:1.5">'+t("term_hint")+'</div>'+
@@ -1027,7 +1046,7 @@ button:focus-visible, [tabindex]:focus-visible { outline:2px solid var(--primary
     else if(a==="cal-close"){ cal=null; render(); }
     else if(a==="cal-overlay"){ if(e.target===el){ cal=null; render(); } }
     else if(a==="open-term"){ termEdit=true; render(); }
-    else if(a==="term-add"){ data.terms=data.terms||[]; data.terms.push({id:uid(),name:"",start:todayKey(weekMonday(weekOffset))}); save(); }
+    else if(a==="term-add"){ data.terms=data.terms||[]; data.terms.push({id:uid(),kind:"t1",name:"",start:todayKey(weekMonday(weekOffset))}); save(); }
     else if(a==="term-del"){ data.terms=(data.terms||[]).filter(function(x){return x.id!==el.dataset.id;}); save(); }
     else if(a==="term-close"){ termEdit=false; render(); }
     else if(a==="term-overlay"){ if(e.target===el){ termEdit=false; render(); } }
@@ -1099,6 +1118,10 @@ button:focus-visible, [tabindex]:focus-visible { outline:2px solid var(--primary
     else if(t2.matches&&t2.matches("[data-oneoffinput]")&&e.key==="Enter"){ e.preventDefault(); addOneoff(t2.dataset.kid,t2.value); }
     else if(t2.matches&&t2.matches(".as-task")&&(e.key===" "||e.key==="Enter")){ e.preventDefault(); toggleItem(t2.dataset.kid,t2.dataset.task); }
     else if(t2.matches&&t2.matches(".as-avatar")&&(e.key===" "||e.key==="Enter")){ e.preventDefault(); pickPhoto(t2.dataset.kid); }
+  });
+  root.addEventListener("change", function(e){
+    var t2=e.target; if(!t2.matches) return;
+    if(t2.matches("[data-termkind]")){ var tid=t2.dataset.id, val=t2.value; (data.terms||[]).forEach(function(x){ if(x.id===tid) x.kind=val; }); save(); }
   });
   var weekAnimating=false;
   function animWeek(slideDir, apply){
