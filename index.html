@@ -215,7 +215,7 @@ button:focus-visible, [tabindex]:focus-visible { outline:2px solid var(--primary
       app_title:"After-School", tab_today:"Today", tab_week:"Schedule", tab_edit:"Edit",
       no_activities:"No classes today 🌿", routines:"Routines", no_routines_today:"No routines for today.", today_todo:"To-do",
       add_oneoff_ph:"Add today's task (e.g. return library book)", all_done:"All done! 🎉",
-      week_title:"Weekly Schedule", seg_table:"Table", seg_byday:"By day", weekend:"Weekend", add_hint:"Tap + to add a class", add_kid_first:"Add a child first.", today_tag:"Today",
+      week_title:"Weekly Schedule", this_week_btn:"This week", swipe_hint:"Swipe to change weeks", seg_table:"Table", seg_byday:"By day", weekend:"Weekend", add_hint:"Tap + to add a class", add_kid_first:"Add a child first.", today_tag:"Today",
       classinfo_title:"Class info", classinfo_sub:"(place · shuttle · supplies)", add:"Add",
       no_classes:"No class info yet.<br>Add place, shuttle and supplies to gather them here.",
       loc:"Place", shuttle:"Shuttle", supplies:"Supplies", yes:"Yes", no:"No", map:"Map",
@@ -237,7 +237,7 @@ button:focus-visible, [tabindex]:focus-visible { outline:2px solid var(--primary
       app_title:"우리집 방과 후", tab_today:"오늘", tab_week:"시간표", tab_edit:"편집",
       no_activities:"오늘은 방과 후 일정이 없어요 🌿", routines:"루틴", no_routines_today:"오늘 해당하는 루틴이 없어요.", today_todo:"할 일",
       add_oneoff_ph:"오늘의 할 일 추가 (예: 도서관 책 반납)", all_done:"다 했어요! 🎉",
-      week_title:"주간 방과 후 시간표", seg_table:"표", seg_byday:"요일별", weekend:"주말", add_hint:"+ 버튼을 눌러 일정을 추가하세요", add_kid_first:"아이를 먼저 추가해 주세요.", today_tag:"오늘",
+      week_title:"주간 방과 후 시간표", this_week_btn:"이번 주", swipe_hint:"좌우로 넘겨 주 이동", seg_table:"표", seg_byday:"요일별", weekend:"주말", add_hint:"+ 버튼을 눌러 일정을 추가하세요", add_kid_first:"아이를 먼저 추가해 주세요.", today_tag:"오늘",
       classinfo_title:"수업 정보", classinfo_sub:"(위치·셔틀·준비물 등)", add:"추가",
       no_classes:"아직 등록된 수업 정보가 없어요.<br>‘추가’로 위치·셔틀·준비물을 적어두면 여기 한곳에 모여서 보여요.",
       loc:"위치", shuttle:"셔틀", supplies:"준비물", yes:"있음", no:"없음", map:"지도",
@@ -259,7 +259,7 @@ button:focus-visible, [tabindex]:focus-visible { outline:2px solid var(--primary
       app_title:"放学后", tab_today:"今天", tab_week:"课表", tab_edit:"编辑",
       no_activities:"今天没有课后安排 🌿", routines:"日常", no_routines_today:"今天没有日常任务。", today_todo:"待办",
       add_oneoff_ph:"添加今天的待办（例如：归还图书）", all_done:"都完成啦！🎉",
-      week_title:"每周课后课表", seg_table:"表格", seg_byday:"按天", weekend:"周末", add_hint:"点击 + 添加课程", add_kid_first:"请先添加孩子。", today_tag:"今天",
+      week_title:"每周课后课表", this_week_btn:"本周", swipe_hint:"左右滑动切换周", seg_table:"表格", seg_byday:"按天", weekend:"周末", add_hint:"点击 + 添加课程", add_kid_first:"请先添加孩子。", today_tag:"今天",
       classinfo_title:"课程信息", classinfo_sub:"（地点·班车·物品）", add:"添加",
       no_classes:"还没有课程信息。<br>添加地点、班车和物品后会汇总在这里。",
       loc:"地点", shuttle:"班车", supplies:"物品", yes:"有", no:"无", map:"地图",
@@ -281,7 +281,7 @@ button:focus-visible, [tabindex]:focus-visible { outline:2px solid var(--primary
       app_title:"放課後", tab_today:"今日", tab_week:"時間割", tab_edit:"編集",
       no_activities:"今日は放課後の予定がありません 🌿", routines:"ルーティン", no_routines_today:"今日のルーティンはありません。", today_todo:"やること",
       add_oneoff_ph:"今日のやることを追加（例：図書館の本を返す）", all_done:"ぜんぶ完了！🎉",
-      week_title:"週間時間割", seg_table:"表", seg_byday:"曜日別", weekend:"週末", add_hint:"＋ を押して予定を追加", add_kid_first:"先に子どもを追加してください。", today_tag:"今日",
+      week_title:"週間時間割", this_week_btn:"今週", swipe_hint:"左右スワイプで週を移動", seg_table:"表", seg_byday:"曜日別", weekend:"週末", add_hint:"＋ を押して予定を追加", add_kid_first:"先に子どもを追加してください。", today_tag:"今日",
       classinfo_title:"教室情報", classinfo_sub:"（場所・送迎・持ち物）", add:"追加",
       no_classes:"教室情報がまだありません。<br>場所・送迎・持ち物を入力するとここにまとまります。",
       loc:"場所", shuttle:"送迎", supplies:"持ち物", yes:"あり", no:"なし", map:"地図",
@@ -776,8 +776,8 @@ button:focus-visible, [tabindex]:focus-visible { outline:2px solid var(--primary
   }
   function weekHTML(){
     var wd=weekDates(weekOffset), layout=data.weekLayout==="list"?"list":"grid";
-    var arrows='<span style="display:inline-flex;gap:3px;margin-left:6px"><button class="as-arrowbtn" data-act="week-prev" aria-label="prev">'+icon("left",15)+'</button><button class="as-arrowbtn" data-act="week-next" aria-label="next">'+icon("right",15)+'</button></span>';
-    var titleline='<div class="as-sub" style="margin:0;display:flex;align-items:center;flex-wrap:wrap;gap:2px">'+t("week_title")+' <span style="font-weight:600;color:var(--muted)">('+weekRangeText(weekOffset)+')</span>'+arrows+'</div>';
+    var nav='<span style="display:inline-flex;align-items:center;gap:2px;margin-left:8px"><button class="as-arrowbtn" data-act="week-prev" aria-label="prev">'+icon("left",15)+'</button><button class="as-btn ghost" data-act="week-today" style="padding:2px 9px;font-size:11.5px;height:24px;line-height:1;'+(weekOffset===0?'color:var(--muted)':'')+'">'+t("this_week_btn")+'</button><button class="as-arrowbtn" data-act="week-next" aria-label="next">'+icon("right",15)+'</button></span>';
+    var titleline='<div class="as-sub" style="margin:0;display:flex;align-items:center;flex-wrap:wrap;gap:2px">'+t("week_title")+' <span style="font-weight:600;color:var(--muted)">('+weekRangeText(weekOffset)+')</span>'+nav+'</div>';
     var seg='<div class="as-seg"><button class="as-seg-btn '+(layout==="grid"?"on":"")+'" data-act="week-layout" data-layout="grid">'+t("seg_table")+'</button><button class="as-seg-btn '+(layout==="list"?"on":"")+'" data-act="week-layout" data-layout="list">'+t("seg_byday")+'</button></div>';
     var wkndBtn='<button class="as-pill '+(data.showWeekend?"on":"")+'" data-act="toggle-weekend" style="height:30px;padding:0 11px;font-size:12.5px;min-width:0">'+t("weekend")+'</button>';
     var controls='<div class="as-row as-wkctrl" style="gap:8px;flex:none">'+seg+wkndBtn+'</div>';
@@ -814,7 +814,7 @@ button:focus-visible, [tabindex]:focus-visible { outline:2px solid var(--primary
     var achv = data.kids.length ? ('<div class="as-row" style="margin:14px 2px 8px;gap:8px;align-items:center"><div class="as-sub" style="margin:0;flex:1">'+t("achievement")+'</div><div class="as-seg"><button class="as-seg-btn '+(data.statScope==="weekday"?"on":"")+'" data-act="stat-scope" data-scope="weekday">'+t("stat_weekday")+'</button><button class="as-seg-btn '+(data.statScope!=="weekday"?"on":"")+'" data-act="stat-scope" data-scope="all">'+t("stat_all")+'</button></div></div>'+data.kids.map(function(kid){ var open=!!achvExpanded[kid.id];
       return '<section class="as-card"><div class="as-row" style="gap:8px"><span class="as-dot" style="background:'+kid.color+'"></span><span class="as-kidname" style="flex:1;font-size:16px">'+esc(kid.name)+'</span><span style="font-weight:800;color:'+kid.color+';font-size:20px">'+monthlyPct(kid.id)+'%</span><span style="color:var(--muted);font-size:11.5px;font-weight:700;margin-left:4px">'+t("this_month")+'</span><button class="as-iconbtn" data-act="achv-expand" data-kid="'+kid.id+'" aria-label="toggle">'+icon(open?"cup":"cdown",18)+'</button></div>'+(open?('<div class="as-empty" style="padding:8px 0">'+monthLabelText(now.getFullYear(),now.getMonth())+'</div><div class="cal-mini">'+calGridHTML(now.getFullYear(),now.getMonth(),{kidId:kid.id,color:kid.color})+'</div>'):'')+'</section>';
     }).join('')) : '';
-    return '<div>'+langCard+themeCard+textCard+'<div class="as-sub" style="margin:4px 2px 8px">'+t("edit_children")+'</div><div class="as-empty" style="padding:0 2px 8px;font-size:11.5px">'+t("reorder_hint")+'</div><div id="kid-list">'+kidsCards+'</div><button class="as-btn ghost" style="width:100%;justify-content:center;padding:14px" data-act="add-kid">'+icon("plus",18)+' '+t("kid_add")+'</button>'+achv+backupCard+'<div style="text-align:center;margin:20px 0 4px"><button class="as-btn ghost" data-act="share-app" style="padding:8px 14px;font-size:13px">'+icon("share",15)+' '+t("share_app")+'</button><div style="color:var(--muted);font-size:11px;font-weight:600;margin-top:10px">'+t("version")+' '+BUILD+'</div></div></div>';
+    return '<div>'+'<div class="as-sub" style="margin:4px 2px 8px">'+t("edit_children")+'</div><div class="as-empty" style="padding:0 2px 8px;font-size:11.5px">'+t("reorder_hint")+'</div><div id="kid-list">'+kidsCards+'</div><button class="as-btn ghost" style="width:100%;justify-content:center;padding:14px" data-act="add-kid">'+icon("plus",18)+' '+t("kid_add")+'</button>'+achv+langCard+themeCard+textCard+backupCard+'<div style="text-align:center;margin:20px 0 4px"><button class="as-btn ghost" data-act="share-app" style="padding:8px 14px;font-size:13px">'+icon("share",15)+' '+t("share_app")+'</button><div style="color:var(--muted);font-size:11px;font-weight:600;margin-top:10px">'+t("version")+' '+BUILD+'</div></div></div>';
   }
   function actEditorPopupHTML(){
     if(!actEdit) return '';
@@ -991,6 +991,7 @@ button:focus-visible, [tabindex]:focus-visible { outline:2px solid var(--primary
     else if(a==="toggle-weekend"){ data.showWeekend=!data.showWeekend; save(); }
     else if(a==="week-prev"){ navWeek(-1); }
     else if(a==="week-next"){ navWeek(1); }
+    else if(a==="week-today"){ gotoCurrentWeek(); }
     else if(a==="dl-image"){ openShareChoice("download"); }
     else if(a==="share"){ openShareChoice("share"); }
     else if(a==="sc-kid"){ if(shareChoice){ var sk=el.dataset.kid; shareChoice.sel[sk]=!shareChoice.sel[sk]; render(); } }
@@ -1086,24 +1087,24 @@ button:focus-visible, [tabindex]:focus-visible { outline:2px solid var(--primary
     else if(t2.matches&&t2.matches(".as-avatar")&&(e.key===" "||e.key==="Enter")){ e.preventDefault(); pickPhoto(t2.dataset.kid); }
   });
   var weekAnimating=false;
-  function navWeek(dir){
-    if(view!=="week"){ weekOffset+=dir; render(); return; }
+  function animWeek(slideDir, apply){
+    if(view!=="week"){ apply(); render(); return; }
     if(weekAnimating) return;
     var card=document.getElementById("as-weekcard");
-    if(!card){ weekOffset+=dir; render(); return; }
+    if(!card){ apply(); render(); return; }
     weekAnimating=true;
     var dist=Math.min(64, Math.round((window.innerWidth||360)*0.11));
     card.style.transition="transform .17s ease, opacity .17s ease";
-    card.style.transform="translateX("+(dir>0?-dist:dist)+"px)";
+    card.style.transform="translateX("+(slideDir>0?-dist:dist)+"px)";
     card.style.opacity="0";
     var done=false;
     function finish(){
       if(done) return; done=true;
-      weekOffset+=dir; render();
+      apply(); render();
       var nc=document.getElementById("as-weekcard");
       if(nc){
         nc.style.transition="none";
-        nc.style.transform="translateX("+(dir>0?dist:-dist)+"px)";
+        nc.style.transform="translateX("+(slideDir>0?dist:-dist)+"px)";
         nc.style.opacity="0";
         void nc.offsetWidth;
         requestAnimationFrame(function(){
@@ -1117,6 +1118,8 @@ button:focus-visible, [tabindex]:focus-visible { outline:2px solid var(--primary
     card.addEventListener("transitionend", finish, {once:true});
     setTimeout(finish, 200);
   }
+  function navWeek(dir){ animWeek(dir, function(){ weekOffset+=dir; }); }
+  function gotoCurrentWeek(){ if(weekOffset===0) return; animWeek(weekOffset>0?-1:1, function(){ weekOffset=0; }); }
   (function(){
     var sx=0, sy=0, st=0, swipeOk=false;
     function noSwipe(node){
